@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% block title %}
+  Server Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+   <div class="row">
+      <div class="col md-12">
+         <div class="jumbotron p-3">
+            <h2>Manage <b>Servers </b>  <button type="button"  class="btn btn-success float-right"
+               data-toggle="modal" data-target="#mymodal">add server</button> </h2>
+
+               
+
+               <table class="table table-hover table-dark">
+
+                  <tr>
+ 
+                     <th>ID</th>
+                     <th>vpnaddress</th>
+                     <th>vpnusername</th>
+                     <th>sshaddress</th>
+                     <th>sshusername</th>
+                     
+                     <th>Action</th>
+
+                 </tr>
+                 {% for row in ipsec %}
+
+                 <tr>
+                  <td>{{row.id}}</td>
+                  <td>{{row.vpnaddress}}</td>
+                  <td>{{row.vpnusername}}</td>
+                  <td>{{row.sshaddress}}</td>
+                  <th>{{row.sshusername}}</th>
+
+                  <td>
+                     <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                     <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+
+                     <a href="/serverroute/{{row.id}}" class="btn btn-info">--></a>
+
+                     
+                  </td>
+
+              </tr>
+              <!-- update server infor start-->
+              <div id="modaledit{{row.id}}" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     
+                     <h4 class="modal-title">update server</h4>
+                  </div>
+                  <div class="modal-body">
+          
+                     <form action="{{url_for('update')}}" method="POST">
+          
+          
+                        <div class="form-group">
+          
+                           <label>Vpnaddress:</label>
+                           <input type="hidden"  name="id" value="{{row.id}}">
+                           <input type="text" class="form-control" name="vpnaddress" required="1">
+          
+          
+                        </div>
+          
+          
+                         <div class="form-group">
+          
+          
+                           <label>Vpnusername:</label>
+                           <input type="text" class="form-control" name="vpnusername" required="1">
+          
+          
+                        </div>
+          
+          
+                         <div class="form-group">
+          
+          
+                           <label>Vpnpassword:</label>
+                           <input type="text" class="form-control" name="vpnpassword" required="1">
+          
+          
+                        </div>
+
+
+                        <label>Sshaddress:</label>
+                  <input type="text" class="form-control" name="sshaddress" required="1">
+               </div>
+                <div class="form-group">
+                <label>sshusername:</label>
+                  <input type="text" class="form-control" name="sshusername" required="1">
+ 
+ 
+               </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                  <label>sshpassword:</label>
+                  <input type="text" class="form-control" name="sshpassword" required="1">
+ 
+ 
+               </div>
+ 
+ 
+ 
+          
+          
+          
+                        <div class="form-group">
+          
+          
+                           <button class="btn btn-primary" type="submit">update server</button>
+          
+          
+                        </div>
+          
+          
+                     </form>
+          
+          
+                  </div>
+          
+          
+                  <div class="modal-footer">
+          
+          
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+          
+                  </div>
+          
+          
+               </div>
+          
+          
+            </div>
+          
+          
+         </div>
+          
+          
+          
+          
+          
+                 </div>
+          
+             </div>
+          </div>
+
+          <!-- edit server end-->
+
+          {% endfor %}
+
+               </table>
+  
+         </div>
+
+          
+
+           <!-- Modal Add Server-->
+ 
+ 
+<div id="mymodal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+ 
+            <h4 class="modal-title">Add Server</h4>
+         </div>
+         <div class="modal-body">
+ 
+            <form action="{{ url_for('insert')}}" method="POST">
+ 
+ 
+               <div class="form-group">
+ 
+                  <label>Vpnaddress:</label>
+                  <input type="text" class="form-control" name="vpnaddress" required="1">
+               </div>
+                <div class="form-group">
+                <label>Vpnusername:</label>
+                  <input type="text" class="form-control" name="vpnusername" required="1">
+ 
+ 
+               </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                  <label>Vpnpassword:</label>
+                  <input type="text" class="form-control" name="vpnpassword" required="1">
+ 
+ 
+               </div>
+
+
+               <label>Ipsecaddress:</label>
+                  <input type="text" class="form-control" name="ipsecaddress" required="1">
+               </div>
+                <div class="form-group">
+                <label>Ipsecusername:</label>
+                  <input type="text" class="form-control" name="ipsecusername" required="1">
+ 
+ 
+               </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                  <label>Ipsecpassword:</label>
+                  <input type="text" class="form-control" name="ipsecpassword" required="1">
+ 
+ 
+               </div>
+ 
+ 
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <button class="btn btn-primary" type="submit">Add Server</button>
+ 
+ 
+               </div>
+ 
+ 
+            </form>
+ 
+ 
+         </div>
+ 
+ 
+         <div class="modal-footer">
+ 
+ 
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ 
+ 
+         </div>
+ 
+ 
+      </div>
+ 
+ 
+   </div>
+ 
+ 
+</div>
+ 
+ 
+
+
+
+
+      </div>
+   </div>
+
+</div>
+
+{% endblock %}
