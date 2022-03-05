@@ -1,0 +1,6 @@
+000 #3: "l2tp-psk"[1] 64.62.197.159:36175 STATE_MAIN_R0 (expecting Main Mode request); nodpd; idle;
+000 #84: "l2tp-psk"[60] 45.137.23.252:42773 STATE_MAIN_R0 (expecting Main Mode request); nodpd; idle;
+000 #103: "l2tp-psk"[71] 164.52.24.189:52249 STATE_MAIN_R0 (expecting Main Mode request); nodpd; idle;
+000 #131: "l2tp-psk"[88] 102.70.3.70:6908 STATE_MAIN_R3 (IKE SA established); EXPIRE in 28767s; newest; lastdpd=1s(seq in:9911 out:0); idle;
+000 #132: "l2tp-psk"[88] 102.70.3.70:6908 STATE_QUICK_R2 (IPsec SA established); EXPIRE in 28768s; newest; eroute owner; ISAKMP SA #131; idle;
+000 #132: "l2tp-psk"[88] 102.70.3.70 esp.cea6948@102.70.3.70 esp.934253b8@107.172.197.127 Traffic: ESPin=12KB ESPout=25KB ESPmax=4194303B 

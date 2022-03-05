@@ -1,0 +1,3 @@
+000 State Information: DDoS cookies not required, Accepting new IKE connections
+000 IKE SAs: total(4), half-open(3), open(0), authenticated(1), anonymous(0)
+000 IPsec SAs: total(1), authenticated(1), anonymous(0)
