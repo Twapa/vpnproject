@@ -1,3 +1,8 @@
+'''
+this script contains helper functions that will be used by
+the GUI framework to make configuration changes on the router
+'''
+
 def change_l2tp_options(params:dict):
     #changes the setting in the options.l2tpd.client
     pass
