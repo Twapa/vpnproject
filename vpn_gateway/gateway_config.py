@@ -7,7 +7,12 @@ import subprocess
 
 def initialise_vpn():
     #carries out necessary configurations prior to system startup
-    subprocess.run(["/root/logfiles/init_connections.sh"], shell=True)
+    res = subprocess.run(["/root/logfiles/init_connections.sh"], shell=True)
+    
+    if res.returncode ==0:
+        return True
+    else:
+        return False
 
 def change_l2tp_options(params:dict):
     #changes the setting in the options.l2tpd.client
