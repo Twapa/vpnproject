@@ -1,7 +1,13 @@
 '''
 this script contains helper functions that will be used by
-the GUI framework to make configuration changes on the router
+the GUI framework to make configuration changes on the router.
+All functions will return True if they run successfully and return False otherwise
 '''
+import subprocess
+
+def initialise_vpn():
+    #carries out necessary configurations prior to system startup
+    subprocess.run(["/root/logfiles/init_connections.sh"], shell=True)
 
 def change_l2tp_options(params:dict):
     #changes the setting in the options.l2tpd.client
@@ -13,7 +19,14 @@ def change_l2tp_server(params:dict):
 
 def change_psk(psk):
     #changes the pre shared key
-    pass
+    try:
+        secrets_files = open("/etc/ipsec.secrets","w")
+        secrets_files.write(": PSK \""+psk+"\"")
+        secrets_files.close()
+
+        return True
+    except:
+        return False
 
 def add_vpn_connection(params:dict):
     #changes the settings in the ipsec.conf file
@@ -23,15 +36,58 @@ def change_dhcp_config():
     #changes settings in the dhcpcd.conf and dnsmasq.conf files
     pass
 
-def change_route():
+def change_route(vpn_server_ip, dafault_gateway_ip):
     #changes the default tunneling route and interface name
-    pass
+    res = subprocess.run(["route", "add", vpn_server_ip , "gw", dafault_gateway_ip])
+    if res.returncode ==0:
+        return True
+    else:
+        return False
 
-def reset_vpn():
-    pass
+def reset_vpn(vpn_name):
+    res1 = subprocess.run(["service", "ipsec", "restart"])
+    res2 = subprocess.run(["service", "xl2tpd", "restart"])
+    res3 = subprocess.run(["ipsec", "up", vpn_name])
 
-def connect_vpn():
-    pass
+    try:
+        l2tp_file = open("/var/run/xl2tpd/l2tp-control", "w")
+        l2tp_file.write("c "+vpn_name)
+        l2tp_file.close()
 
-def disconnect_vpn():
-    pass
+        if res1.returncode ==0 and res2.returncode==0 and res3.returncode==0:     #returns True if all the terminal commands have excuted successfully
+            return True
+        else:
+           return False
+    except:
+        return False
+
+def connect_vpn(vpn_name):
+    res = subprocess.run(["ipsec", "up", vpn_name])
+
+    try:
+        l2tp_file = open("/var/run/xl2tpd/l2tp-control", "w")
+        l2tp_file.write("c "+vpn_name)
+        l2tp_file.close()
+
+        if res.returncode ==0:
+            return True
+        else:
+           return False
+    except:
+        return False
+
+def disconnect_vpn(vpn_name):
+    res = subprocess.run(["ipsec", "down", vpn_name])
+
+    try:
+        l2tp_file = open("/var/run/xl2tpd/l2tp-control", "w")
+        l2tp_file.write("d "+vpn_name)
+        l2tp_file.close()
+
+        if res.returncode ==0:
+            return True
+        else:
+           return False 
+    except:
+        return False
+    
