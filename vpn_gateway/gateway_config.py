@@ -4,6 +4,8 @@ the GUI framework to make configuration changes on the router.
 All functions will return True if they run successfully and return False otherwise
 '''
 import subprocess
+import json
+import socket
 
 def initialise_vpn():
     #carries out necessary configurations prior to system startup
@@ -95,4 +97,14 @@ def disconnect_vpn(vpn_name):
            return False 
     except:
         return False
+    
+
+def query_vpn_network(params:dict):
+    c_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    query_server_ip = "127.0.0.1"
+    query_server_port = 1500
+    c_sock.connect((query_server_ip, query_server_port))
+    c_sock.send(json.dumps(params).encode("ascii"))
+    data = c_sock.recv(1024)
+    return json.loads(data)
     

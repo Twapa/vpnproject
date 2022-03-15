@@ -1,3 +1,4 @@
+#This script is used to initialise VPN coonection when the raspberry pi is rebooted
 service ipsec restart
 service xl2tpd restart
 
@@ -5,11 +6,12 @@ ipsec up gateway_vpn
 
 echo "c gateway_vpn" > /var/run/xl2tpd/l2tp-control
 
-ip route
+#ip route
 
-route add 107.172.197.127 gw 192.168.43.1
+#route add 107.172.197.127 gw 192.168.43.1
 
-route add default dev ppp0
+#route add default dev ppp0
+#echo 1 > /proc/sys/net/ipv4/ip_forward
 
 iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
 iptables -A FORWARD -i eth0 -o ppp0 -j ACCEPT

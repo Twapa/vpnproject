@@ -1,6 +1,6 @@
 #NOTE!!!
 #THIS SCRIPT IS USED FOR SETTING UP A VPN GATEWAY ROUTER ON A RASPBERRY PI,
-#AND NOT THE ACTUAL VPN SERVER
+#AND NOT THE ACTUAL VPN SERVER ITSELF
 echo ">> STEP 1 OF 6: UPDATING AND INSTALLING REQUIRED PACKAGES"
 apt-get update
 apt-get upgrade -y
@@ -106,7 +106,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 sysclt -p
 
-apt=get install iptables -y
+apt-get install iptables -y
 
 iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
 iptables -A FORWARD -i eth0 -o ppp0 -j ACCEPT
@@ -114,5 +114,12 @@ iptables -A FORWARD -i ppp0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCE
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -i eth0 -p icmp -j ACCEPT
 iptables -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
+
+#port forwarding to redirect any packet destined for port 80 to the internal private ip
+iptables -t nat -A PREROUTING -i ppp0 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.130
+iptables -t nat -A POSTROUTING -o eth0 -p tcp --dport 80 -d 192.168.1.130 -j SNAT --to-source 192.168.1.2
+
+
+
 
 echo "INSTALLATION COMPLETE!!!"
