@@ -1,0 +1,2178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>dashboard.qeury_server_dashboard API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>dashboard.qeury_server_dashboard</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import dash
+import dash_html_components as html
+import dash_core_components as dcc
+import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+from datetime import datetime
+import plotly.offline as pyo
+import plotly.graph_objects as go
+from plotly import tools
+import dash_daq as daq
+import sqlite3
+import socket
+import json
+
+app = dash.Dash(__name__,
+    meta_tags=[
+        {&#34;name&#34;: &#34;viewport&#34;, &#34;content&#34;: &#34;width=device-width, initial-scale=1.0&#34;}
+    ],)
+app.config[&#39;suppress_callback_exceptions&#39;]= True
+
+app.layout = html.Div([
+    # represents the URL bar, doesn&#39;t render anything
+    dcc.Location(id=&#39;url&#39;, refresh=False),
+    dcc.Interval(
+        id=&#39;interval-component&#39;,
+        interval=6000, # 6000 milliseconds = 6 seconds
+        n_intervals=0
+    ),
+    # content will be rendered in this element
+    html.Div(id=&#39;page-content&#39;),
+    html.Div(id=&#39;dummy-div&#39;)
+])
+
+def server_location_on_map():
+    countries = []
+    #db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    for row in cursor:
+        countries.append(row[2])
+
+    countries = list(set(countries))
+    map_data =[]
+    for country in countries:
+        cursor = db.execute(&#39;SELECT * FROM COUNTRY_MAP_LOCATION WHERE country =?&#39;,(country,))
+        for row in cursor:
+            map_data.append(
+                {
+                    &#34;type&#34;: &#34;scattermapbox&#34;,
+                    &#34;lat&#34;: [row[2]],
+                    &#34;lon&#34;: [row[1]],
+                    &#34;hoverinfo&#34;: &#34;text&#34;,
+                    &#34;text&#34;: (row[3]+&#34; &#34;+row[4]),
+                    &#34;mode&#34;: &#34;markers&#34;,
+                    &#34;marker&#34;: {&#34;size&#34;: 10, &#34;color&#34;: &#34;#fec036&#34;},
+                }
+            )
+            print(map_data)
+    return map_data
+
+
+# Mapbox
+MAPBOX_ACCESS_TOKEN = &#34;pk.eyJ1Ijoic3R1YXJ0MzkiLCJhIjoiY2wxMDJtYXg2MDczeTNqdzF2bXFtN3M5OCJ9.cksZKSy__gdy6-RHj1wbaw&#34;
+MAPBOX_STYLE = &#34;mapbox://styles/plotlymapbox/cjyivwt3i014a1dpejm5r7dwr&#34;
+
+map_data = server_location_on_map()
+
+map_toggle = daq.ToggleSwitch(
+    id=&#34;control-panel-toggle-map&#34;,
+    value=False,
+    label=[&#34;Summary&#34;, &#34;Details&#34;],
+    color=&#34;#ffe102&#34;,
+    style={&#34;color&#34;: &#34;#black&#34;},
+)
+map_layout = {
+    &#34;mapbox&#34;: {
+        &#34;accesstoken&#34;: MAPBOX_ACCESS_TOKEN,
+        &#34;style&#34;: MAPBOX_STYLE,
+        &#34;center&#34;: {&#34;lat&#34;: 45},
+    },
+    &#34;showlegend&#34;: False,
+    &#34;autosize&#34;: True,
+    &#34;paper_bgcolor&#34;: &#34;#1e1e1e&#34;,
+    &#34;plot_bgcolor&#34;: &#34;#1e1e1e&#34;,
+    &#34;margin&#34;: {&#34;t&#34;: 0, &#34;r&#34;: 0, &#34;b&#34;: 0, &#34;l&#34;: 0},
+}
+map_graph = html.Div(
+    id=&#34;world-map-wrapper&#34;,
+    children=[
+        #map_toggle,
+        dcc.Graph(
+            id=&#34;world-map&#34;,
+            figure={&#34;data&#34;: map_data, &#34;layout&#34;: map_layout},
+            config={&#34;displayModeBar&#34;: False, &#34;scrollZoom&#34;: False},
+        ),
+    ],
+)
+
+options_dropdown = dcc.Dropdown(
+    id=&#34;satellite-dropdown-component&#34;,
+    options=[
+        {&#34;label&#34;: &#34;Map Graph&#34;, &#34;value&#34;: &#34;map_graph&#34;},
+        {&#34;label&#34;: &#34;VPN Monitoring&#34;, &#34;value&#34;: &#34;server_stats&#34;},
+        {&#34;label&#34;: &#34;VPN Gateways&#34;, &#34;value&#34;: &#34;net_info&#34;},
+    ],
+    clearable=False,
+    value=&#34;map_graph&#34;,
+)
+def get_network_details():
+    #db_path = &#34;/root/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)
+    #for row in cursor:
+    #    host_names.append(row[1])
+
+def return_server_details(host):
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names, children, network_id = [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+
+    print(&#39;THE HOST : &#39;,host)
+    location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out = [], [], [], [], [], [], [], [], [], [], [], []
+    usernames, passwords, psks, ips = [], [], [], []
+    ip_port, tf_in, tf_out = [], [], []
+    time_submitted, ipsec_status = [], []
+    status, client_ip, ports = [], [], []
+    
+    cursor = db.execute(&#39;SELECT * FROM PORTS WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        ports.append(row[2])
+        client_ip.append(row[3])
+        status.append(row[4])
+
+    #get user info
+    cursor = db.execute(&#39;SELECT * FROM CHAP_SECRETS WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        usernames.append(row[2])
+        passwords.append(row[3])
+        psks.append(row[4]) 
+        ips.append(row[1])
+
+    cursor = db.execute(&#39;SELECT * FROM CLIENT_STATES WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        ip_port.append(row[1]) 
+        tf_in.append(row[2]) 
+        tf_out.append(row[3])
+    
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS WHERE hostname =?&#39;,(host,))
+    for row in cursor:
+        time_submitted.append(row[0])
+        total_users.append(row[3])
+        traffic_in.append(row[11])
+        traffic_out.append(row[12])
+        min_rtt.append(row[15])
+        avg_rtt.append(row[16])
+        max_rtt.append(row[17])
+        ip_address.append(row[18])
+        cpu.append(row[13])
+        ram.append(row[14])
+        location.append(row[2])
+        pks_recieved.append(row[19])
+        pks_lost.append(row[20])
+        ipsec_status.append(row[21])
+    print(&#39;packet lost : &#39;,pks_lost[len(pks_lost)-1],&#39;packets recieved : &#39;,pks_recieved[len(pks_recieved)-1])
+
+    return time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports
+
+def return_gateway_details():
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    network_id, server_ip, username, password, psk, router_ip = [], [], [], [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)
+    for row in cursor:
+        network_id.append(row[0])
+        server_ip.append(row[1])
+        username.append(row[2])
+        password.append(row[3])
+        psk.append(row[4])
+        router_ip.append(row[5])
+    
+    return network_id, server_ip, username, password, psk, router_ip
+
+side_panel_title = html.P(
+    id=&#34;satellite-dropdown-text&#34;, children=[&#34; Query Server&#34;, html.Br(), &#34; Dashboard&#34;]
+)
+
+ip_address_field = html.H1(id=&#34;satellite-name&#34;, children=(&#34;IP : 88.80.187.189&#34;))
+
+server_details = html.Div(
+    className=&#34;satellite-description&#34;, id=&#34;satellite-description&#34;
+)
+
+side_panel_layout = html.Div(
+    id=&#34;panel-side&#34;,
+    children=[
+        side_panel_title,
+        html.Div(id=&#34;satellite-dropdown&#34;, children=options_dropdown),
+        html.Div(id=&#34;panel-side-text&#34;, children=[ip_address_field, server_details]),
+    ],
+)
+
+server_statistics = html.Div(
+    #id=&#34;histogram-container&#34;,
+    children=[
+        html.Div(
+            id=&#34;histogram-container-graphs&#34;,
+            children=&#34;&#34;
+            ),
+        html.Div(
+            id=&#34;histogram-container-graphs2&#34;,
+            children=&#34;&#34;
+            )
+        ],
+)
+
+vpn_gateways = html.Div(
+    #id=&#34;histogram-container&#34;,
+    children=[
+        html.Div(
+            id=&#34;gateway-container&#34;,
+            children=&#34;&#34;
+            ),
+        html.Div(
+            id=&#34;gateway-container2&#34;,
+            children=&#34;&#34;
+            )
+        ],
+)
+
+main_panel_layout = html.Div(
+        id=&#34;panel-upper-lower2&#34;,
+        children=[
+            map_toggle,
+            html.Div(
+                id=&#34;panel-upper-lower&#34;,
+                children=[
+                    map_graph])
+            ])
+
+root_layout = html.Div(
+    id=&#34;root&#34;,
+    children=[
+        side_panel_layout,
+        main_panel_layout,
+    ],
+)
+#
+
+@app.callback(Output(&#34;gateway-container&#34;, &#39;children&#39;),
+              [Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)])
+def update_gateway_details(n):
+    network_id, server_ip, username, password, psk, router_ip = return_gateway_details()
+    if len(network_id) &gt; 0:
+        _children = []
+        for i in range(0, len(network_id)):
+            _children.append(
+                html.Div(
+                    id=&#39;gateway-panel&#39;,
+                    children=[
+                        html.Div(
+                            id=&#39;gateway-panel-image-div&#39;,
+                            children=[
+                                html.Img(id=&#39;gateway-panel-image&#39;, src=&#39;assets/gateway_image.png&#39;)
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;gateway-panel-details&#39;,
+                            children=[
+                                    html.Div(
+                                        id=&#34;value-setter-panel-header1&#34;,
+                                        children=[
+                                            html.Div(&#39;Network Id&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;VPN Server IP&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;Pre Shared Key&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;Router Ip&#39;, className=&#34;four columns&#34;),
+                                        ],
+                                        className=&#34;row&#34;,
+                                    ),
+
+                                
+                                    html.Div(
+                                        id=&#34;value-setter-panel-u1&#34;,
+                                        children=[
+                                            html.Div(network_id[i],className=&#34;four columns&#34;),
+                                            html.Div(server_ip[i], className=&#34;four columns&#34;),
+                                            html.Div(psk[i], className=&#34;four columns&#34;),
+                                            html.Div(router_ip[i], className=&#34;four columns&#34;),
+                                            ],
+                                        className=&#34;row&#34;,
+                                        )
+                                    
+                            ]
+                        ),
+                    ]
+                )
+            )
+        return _children
+    
+    else:
+        
+        return html.Div(
+               id=&#39;gateway-panel-nimage-div&#39;,
+               children=[
+                   html.Img(id=&#39;gateway-panel-image&#39;, src=&#39;assets/gateway_image_no_found.png&#39;)
+               ]
+            )
+
+
+@app.callback(Output(&#34;satellite-description&#34;, &#39;children&#39;),
+              [Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)])
+def update_server_details(n):
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names, children, network_id, tunnel_count = [], [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    #returns number of servers being tracked
+    for row in cursor:
+        host_names.append(row[1])
+
+    host_names = list(set(host_names))
+    temp = []
+    n_tunnels = 0
+    for __host in host_names:
+        cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS WHERE hostname =?&#39;, (__host,))
+        for row in cursor:
+            temp.append(row[3])
+
+        if len(temp) &gt; 0:
+            n_tunnels += int(temp[len(temp)-1])
+
+    servers_count = len(list(set(host_names)))
+    
+    #returns number of networks being tracked
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)
+    for row in cursor:
+        network_id.append(row[0])
+
+    active_networks = 0
+    if len(network_id) &gt; 0:
+        active_networks = len(network_id)
+        
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;VPN servers : &#34;+ str(servers_count)))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Active Networks : &#34;+ str(active_networks)))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Active Users : &#34;+ str(len(network_id))))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;PPP Tunnels : &#34;+ str(n_tunnels)))]
+        )
+    )
+    
+    
+    
+    
+    return children
+
+#@app.callback(Output(&#34;histogram-container-graphs&#34;, &#39;children&#39;),
+#    [
+#        Input(&#34;server_settings&#34;, &#34;n_clicks&#34;), 
+#        Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)
+#    ],
+#    [State(&#39;server_settings&#39;, &#39;value&#39;)],)
+@app.callback(Output(&#34;histogram-container-graphs&#34;, &#39;children&#39;),
+    [
+        Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        Input(&#34;control-panel-toggle-map&#34;, &#34;value&#34;),
+    ])
+def return_server_stats(n_intervals, toggle):
+    #db_path = &#34;/root/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names = []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    for row in cursor:
+        host_names.append(row[1])
+
+    host_names = list(set(host_names))
+    _children =[]
+    #toggle = False
+    if not toggle:
+        for host in host_names:
+            time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(host) 
+
+            time_submitted = convert_to_datetime(time_submitted)
+            if len(traffic_in) &gt; 70:
+                traffic_in = traffic_in[(len(traffic_in)-70):len(traffic_in)]
+                traffic_out = traffic_out[(len(traffic_out)-70):len(traffic_out)]
+                time_submitted = time_submitted[(len(time_submitted)-70):len(time_submitted)]
+
+            pksl = &#39;0&#39;
+           
+            _children.append(
+            
+                    html.Div(
+                        id=&#39;panel-lower&#39;,
+                        children=[
+                            html.Div(
+                                id=&#34;histogram-header&#34;,
+                                children=[
+                                    html.H1(
+                                        id=&#34;histogram-title&#34;, children=[(host+&#34; &#34;+str(ip_address[len(ip_address)-1])+&#34; (&#34;+location[len(location)-1]+&#34;)&#34;)]
+                                    ),
+                                    html.Button(
+                                        id=&#34;server_settings&#34;,
+                                        children=&#34;☰&#34;,
+                                        value=host,
+                                        n_clicks=0)
+                                ],
+                            ),
+                            dcc.Graph(
+                                id=&#34;histogram-graph&#34;,
+                                figure={
+                                    &#34;data&#34;: [
+                                        {
+                                            &#34;x&#34;: time_submitted,
+                                            &#34;y&#34;: traffic_in,
+                                            &#34;type&#34;: &#34;scatter&#34;,
+                                            &#34;name&#34;:&#34;Data In&#34;,
+                                            &#34;marker&#34;: {&#34;color&#34;: &#34;#89f72f&#34;},
+                                        },
+                                        {
+                                            &#34;x&#34;: time_submitted,
+                                            &#34;y&#34;: traffic_out,
+                                            &#34;type&#34;: &#34;scatter&#34;,
+                                            &#34;name&#34;:&#34;Data Out&#34;,
+                                            &#34;marker&#34;: {&#34;color&#34;: &#34;#117cf7&#34;},
+                                        }
+                                    ],
+                                    &#34;layout&#34;: {
+                                        &#34;margin&#34;: {&#34;t&#34;: 30, &#34;r&#34;: 35, &#34;b&#34;: 40, &#34;l&#34;: 50},
+                                        &#34;xaxis&#34;: {&#34;dtick&#34;: 5, &#34;gridcolor&#34;: &#34;#636363&#34;, &#34;showline&#34;: False},
+                                        &#34;yaxis&#34;: {&#34;showgrid&#34;: False},
+                                        &#34;plot_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                                        &#34;paper_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                                        &#34;font&#34;: {&#34;color&#34;: &#34;gray&#34;},
+                                    },
+                                },
+                                config={&#34;displayModeBar&#34;: False},
+                            ),
+
+                            html.Div(
+                                id=&#34;panel-lower-x&#34;,
+                                children=[
+                                    #html.Div(id=&#34;panel-lower-y&#34;, children=&#39;&#39;),
+                                    html.H1(id=&#34;satellite-name2&#34;, children=(&#34;CPU : &#34;+str(cpu[len(cpu)-1])+&#39;%&#39;)),
+                                    html.H1(id=&#34;satellite-name2&#34;, children=(&#34;RAM : &#34;+str(ram[len(ram)-1])+&#39;%&#39;)),
+                                    #html.H1(id=&#34;satellite-name2&#34;, children=(&#34;Minimum Latency : &#34;+str(min_rtt[len(min_rtt)-1]))),
+                                    html.H1(id=&#34;satellite-name2&#34;, children=(&#34;Packet Loss : &#34;+pksl+&#39;%&#39;)),
+                                    html.H1(id=&#34;satellite-name2&#34;, children=(&#34;Response Time : &#34;+str(max_rtt[len(max_rtt)-1]))+&#34;ms&#34;),
+                                    html.H1(id=&#34;satellite-name2&#34;, children=(&#34;Connected Users : &#34;+str(total_users[len(total_users)-1]))),
+                                    
+                                ]
+                            ),
+                        ]),
+                )
+        return _children
+    else:
+        return None
+
+def build_tabs():
+    return 
+
+@app.callback(Output(&#34;histogram-container-graphs2&#34;, &#39;children&#39;),
+    [
+        Input(&#34;control-panel-toggle-map&#34;, &#34;value&#34;),
+    ])
+def return_server_stats(toggle):
+    #db_path = &#34;/root/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names = []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    for row in cursor:
+        host_names.append(row[1])
+
+    host_names = list(set(host_names))
+    _children =[]
+    #toggle = False
+    if toggle:
+        fig = html.Div(
+                html.Div(
+                    id=&#39;someid&#39;,
+                    children=[
+                        html.Div(
+                            id=&#34;tabs&#34;,
+                            className=&#34;tabs&#34;,
+                            children=[
+                                dcc.Tabs(
+                                    id=&#34;app-tabs&#34;,
+                                    value=&#34;tab2&#34;,
+                                    className=&#34;custom-tabs&#34;,
+                                    children=[
+                                        dcc.Tab(
+                                            id=&#34;Specs-tab&#34;,
+                                            label=&#34;Status Details&#34;,
+                                            value=&#34;tab1&#34;,
+                                            className=&#34;custom-tab&#34;,
+                                            selected_className=&#34;custom-tab--selected&#34;,
+                                        ),
+                                        dcc.Tab(
+                                            id=&#34;Control-chart-tab&#34;,
+                                            label=&#34;Specification Settings&#34;,
+                                            value=&#34;tab2&#34;,
+                                            className=&#34;custom-tab&#34;,
+                                            selected_className=&#34;custom-tab--selected&#34;,
+                                        ),
+                                    ],
+                                )
+                            ],
+                        ),
+            
+                        html.Div(
+                            id=&#39;someid&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;settings-menu&#34;,
+                                    children=[
+                                        html.Div(
+                                            id=&#34;metric-select-menu&#34;,
+                                            # className=&#39;five columns&#39;,
+                                            children=[
+                                                #html.Label(id=&#34;metric-select-title&#34;, children=&#34;Select Server&#34;),
+                                                html.Br(),
+                                                html.Div(
+                                                    id=&#39;dropd1&#39;, 
+                                                    children=[
+                                                        html.Div(
+                                                            id=&#34;value-details-view-output-xx&#34;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Server&#34;))], className=&#34;output-datatable&#34;
+                                                        ),
+                                                        dcc.Dropdown(
+                                                            id=&#34;metric-select-dropdown&#34;,
+                                                            options=list(
+                                                                {&#34;label&#34;: param, &#34;value&#34;: param} for param in host_names
+                                                            ),
+                                                            value=host_names[0],
+                                                        ),
+                                                    ]
+                                                ),        
+                                            ],
+                                        ),
+                                        html.Div(
+                                            id=&#34;value-setter-menu&#34;,
+                                            # className=&#39;six columns&#39;,
+                                            children=[
+                                                html.Div(id=&#34;value-setter-panel&#34;),
+                                                html.Br(),
+                                                # html.Div(
+                                                #     id=&#34;button-div&#34;,
+                                                #     children=[
+                                                #         html.Button(&#34;Update&#34;, id=&#34;value-setter-set-btn&#34;),
+                                                #         html.Button(
+                                                #             &#34;View current setup&#34;,
+                                                #             id=&#34;value-setter-view-btn&#34;,
+                                                #             n_clicks=0,
+                                                #         ),
+                                                #     ],
+                                                # ),
+                                                
+                                            ],
+                                        ),
+                        
+                                    ],
+                                ),
+
+        
+                            ]
+                        ),
+                        html.Div(
+                            id=&#34;value-details-view-output&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#34;value-setter-view-output&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#39;dropd1&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output-xx&#34;,children=&#39;&#39;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-x&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#34;value-details-view-output-y&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#39;hhh&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output-z&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z2&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z3&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z4&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z5&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z6&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;user-container&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-setter-view-output1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        
+                    ]        
+                )
+            )
+   
+        return fig
+    else:
+        return None
+    
+def convert_to_datetime(time_submitted):
+    res = []
+    for t in time_submitted:
+        res.append(datetime.fromtimestamp(t).strftime(&#34;%H:%M:%S&#34;) )
+    return res
+
+#value-details-view-output
+@app.callback(
+    Output(&#39;value-details-view-output&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, n, tab_value):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    # username, ip_port, rx, tx, is_static, vpn_password
+    
+    if tab_value ==&#39;tab1&#39;:
+        _total_users = 0
+        if len(total_users) &gt; 0:
+            _total_users = total_users[len(total_users)-1] 
+
+
+        _time = convert_to_datetime(time_submitted)
+        if len(_time) &gt; 40:
+            _time = _time[(len(_time)-40):len(_time)]
+        
+        return html.Div(
+            id=&#39;detailed-box1&#39;,
+            children=[
+                html.Div(
+                    id=&#34;detailed-box&#34;,
+                    children=[
+                        html.Div(
+                            id=&#39;tt2&#39;,
+                            children=[
+                        
+                                #tunnels
+                                html.Div(
+                                    id=&#39;yyR&#39;,
+                                    children=[
+                                        html.Div(
+                                            id=&#39;pad-box&#39;,
+                                            children=[
+                                                html.Div(
+                                                    id=&#34;detail-element-box&#34;,
+                                                    children=[str(_total_users)]
+                                                ),
+                                                html.Div(
+                                                    id=&#34;detail-element-box1&#34;,
+                                                    children=[&#39; tunnels&#39;]
+                                                ),
+                                            ]
+                                        )
+                                    ]
+                                ),
+
+                                # users
+                                html.Div(
+                                    id=&#39;yyR&#39;,
+                                    children=[
+                                        html.Div(
+                                            id=&#39;pad-box&#39;,
+                                            children=[
+                                                html.Div(
+                                                    id=&#34;detail-element-box&#34;,
+                                                    children=[str(_total_users)]
+                                                ),
+                                                html.Div(
+                                                    id=&#34;detail-element-box1&#34;,
+                                                    children=[&#39; users&#39;]
+                                                ),
+                                            ]
+                                        )
+                                    ]
+                                ),
+                                
+
+                                #status
+                                html.Div(
+                                    id=&#34;yyR&#34;,
+                                    children=[
+                                        html.Div(
+                                            id=&#39;pad-box&#39;,
+                                            children=[
+                                                html.Div(
+                                                    id=&#34;detail-element-box&#34;,
+                                                    children=[&#34;Status: &#34;]
+                                                ),
+                                                html.Div(
+                                                    id=&#34;detail-element-box1&#34;,
+                                                    children=[str(ipsec_status[len(ipsec_status)-1])]
+                                                ),
+                                            ]
+                                        )
+                                    ]
+                                ),
+
+
+
+                            ]
+                        ),
+
+                        html.Div(
+                            id=&#39;tt3&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#39;rxt&#39;,
+                                    children=[
+                                        #ip address
+                                        html.Div(
+                                            id=&#39;yy2&#39;,
+                                            children=[
+                                                html.Div(
+                                                    id=&#39;pad-box&#39;,
+                                                    children=[
+                                                        html.Div(
+                                                                id=&#34;detail-element-box&#34;,
+                                                                children=[&#39;IP &#39;]
+                                                            ),
+                                                        html.Div(
+                                                                id=&#34;detail-element-box1&#34;,
+                                                                children=[ip_address[len(ip_address)-1]]
+                                                            ),
+                                                    ]
+                                                )
+                                            ]
+                                        ),
+                                    ]
+                                ),
+                                
+                                html.Div(
+                                    id=&#39;trx&#39;,
+                                    children=[
+                                        #Tx Rx panel
+                                        html.Div(
+                                            id=&#39;tt4&#39;,
+                                            children=[
+                                                #traffic in
+                                                html.Div(
+                                                    id=&#39;yyT&#39;,
+                                                    children=[
+                                                        html.Div(
+                                                            id=&#39;pad-box&#39;,
+                                                            children=[
+                                                                    html.Div(
+                                                                        id=&#34;detail-element-box&#34;,
+                                                                        children=[&#39;Tx  &#39;]
+                                                                    ),
+                                                                    html.Div(
+                                                                        id=&#34;detail-element-box1&#34;,
+                                                                        children=[str(round((traffic_out[len(traffic_out)-1]/1000),3))+&#39;KB&#39;]
+                                                                    ),
+                                                                ]
+                                                        )
+                                                    ]
+                                                ),
+                                                
+                                                #traffic out
+                                                html.Div(
+                                                    id=&#39;yyT&#39;,
+                                                    children=[
+                                                        html.Div(
+                                                            id=&#39;pad-box&#39;,
+                                                            children=[
+                                                                html.Div(
+                                                                        id=&#34;detail-element-box&#34;,
+                                                                        children=[&#39;Rx  &#39;]
+                                                                    ),
+                                                                html.Div(
+                                                                        id=&#34;detail-element-box1&#34;,
+                                                                        children=[str(round((traffic_in[len(traffic_in)-1]/1000),3))+&#39;KB&#39;]
+                                                                    ),
+                                                                ]
+                                                            )
+                                                        ]
+                                                    ),
+                                            ]
+                                        )
+                                    ]
+                                ),
+                            ]
+                        ),
+                    ]
+                ),
+
+                html.Div(
+                        id=&#34;detailed-box&#34;,
+                        children=[
+                            html.Div(
+                                id=&#39;gchart&#39;,
+                                children=[
+                                    dcc.Graph(
+                                        id=&#34;histogram-graph&#34;,
+                                        figure={
+                                            &#34;data&#34;: [
+                                                {
+                                                    &#34;x&#34;: _time,
+                                                    &#34;y&#34;: total_users,
+                                                    &#34;type&#34;: &#34;scatter&#34;,
+                                                    &#34;name&#34;:&#34;Data In&#34;,
+                                                    &#34;marker&#34;: {&#34;color&#34;: &#34;#89f72f&#34;},
+                                                },
+                                            ],
+                                            &#34;layout&#34;: {
+                                                &#34;margin&#34;: {&#34;t&#34;: 30, &#34;r&#34;: 35, &#34;b&#34;: 40, &#34;l&#34;: 50},
+                                                &#34;xaxis&#34;: {&#34;dtick&#34;: 5, &#34;gridcolor&#34;: &#34;#636363&#34;, &#34;showline&#34;: False},
+                                                &#34;yaxis&#34;: {&#34;showgrid&#34;: False},
+                                                &#34;plot_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                                                &#34;paper_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                                                &#34;font&#34;: {&#34;color&#34;: &#34;gray&#34;},
+                                            },
+                                        },
+                                        config={&#34;displayModeBar&#34;: False},
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+            ]
+        )
+
+    else:
+        return &#39;&#39;
+
+@app.callback(
+    Output(&#39;value-setter-view-output&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, n, tab_value):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    # username, ip_port, rx, tx, is_static, vpn_password
+    
+    
+    if tab_value == &#39;tab1&#39;:
+        _total_users = 0
+        if len(total_users) &gt; 0:
+            _total_users = total_users[len(total_users)-1]
+
+        _children = [
+            html.Div(
+                id=&#34;value-setter-panel-header&#34;,
+                children=[
+                    html.Div(&#39;Connected IPs&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Traffic In&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Traffic Out&#39;, className=&#34;four columns&#34;),
+                ],
+                className=&#34;row&#34;,
+            )
+        ]
+        if len(ip_port) &gt; 0:
+            ip_port1 = list(set(ip_port))
+            
+            for i in ip_port1:
+                r, r1, r2 = [], [], []
+                for z in range(0,len(ip_port)):
+                    if i in ip_port[z]:
+                        r.append(ip_port[z])
+                        r1.append(tf_in[z])
+                        r2.append(tf_out[z])
+                
+                r = r[len(r)-1]
+                r1 = r1[len(r1)-1]
+                r2 = r2[len(r2)-1]
+
+                _children.append(
+                    html.Div(
+                        id=&#34;value-setter-panel-u&#34;,
+                        children=[
+                            html.Div(r,className=&#34;four columns&#34;),
+                            html.Div(r1, className=&#34;four columns&#34;),
+                            html.Div(r2, className=&#34;four columns&#34;),
+                        ],
+                        className=&#34;row&#34;,
+                    )
+                )
+        return _children
+
+    else: 
+        return &#39;&#39;  
+
+
+@app.callback(
+    Output(&#39;value-setter-view-output1&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, tab_value): 
+    if tab_value == &#39;tab2&#39;:
+        time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+        
+        #usernames, passwords, psks,
+        
+        _total_users = 0
+        if len(total_users) &gt; 0:
+            _total_users = total_users[len(total_users)-1]
+
+        _children = [
+            html.Div(
+                id=&#34;value-setter-panel-header-lable&#34;,
+                children=[
+                    html.H1(id=&#39;vpn_clients_lable&#39;, children=[&#39;User Profile&#39;], className=&#34;four columns&#34;),
+                ],
+            ),
+            html.Div(
+                id=&#34;value-setter-panel-header&#34;,
+                children=[
+                    html.Div(&#39;Username&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Password&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Pre Shared key&#39;, className=&#34;four columns&#34;),
+                ],
+                className=&#34;row&#34;,
+            )
+        ]
+        if len(usernames) &gt; 0:
+            Qusernames = list(set(usernames))
+            for i in Qusernames:
+                r, r1, r2 = [], [], []
+                for z in range(0,len(usernames)):
+                    if i in usernames[z]:
+                        r.append(usernames[z])
+                        r1.append(passwords[z])
+                        r2.append(psks[z])
+                
+                r = r[len(r)-1]
+                r1 = r1[len(r1)-1]
+                r2 = r2[len(r2)-1]
+
+                _children.append(
+                    html.Div(
+                        id=&#34;value-setter-panel-u&#34;,
+                        children=[
+                            html.Div(r,className=&#34;four columns&#34;),
+                            html.Div(r1, className=&#34;four columns&#34;),
+                            html.Div(r2, className=&#34;four columns&#34;),
+                        ],
+                        className=&#34;row&#34;,
+                    )
+                )
+        return [html.Div(id=&#39;lefty1&#39;, children=_children)]
+    else:
+        return &#39;&#39;
+
+@app.callback(
+    Output(&#39;value-details-view-output1&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, n_int, tab_value):
+    if tab_value == &#39;tab2&#39;:
+        time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+
+        status, client_ip, ports
+        
+        #add user, delete user, change user, change psk, enable port forwarding, disable port forwarding
+
+        _children = [
+            html.Div(
+                id=&#34;value-setter-panel-header-lable&#34;,
+                children=[
+                    html.H1(id=&#39;vpn_clients_lable&#39;, children=[&#39;Connected Users&#39;], className=&#34;four columns&#34;),
+                ],
+            ),
+            html.Div(
+                id=&#34;value-setter-panel-header&#34;,
+                children=[
+                    html.Div(&#39;Client IP&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Port&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Status&#39;, className=&#34;four columns&#34;),
+                ],
+                className=&#34;row&#34;,
+            )
+        ]
+        if len(client_ip) &gt; 0:
+            Zclient_ip = list(set(client_ip))
+
+            for i in Zclient_ip:
+                r, r1, r2 = [], [], []
+                for z in range(0,len(client_ip)):
+                    if i in client_ip[z]:
+                        r.append(client_ip[z])
+                        r1.append(ports[z])
+                        r2.append(status[z])
+                
+                r = r[len(r)-1]
+                r1 = r1[len(r1)-1]
+                r2 = r2[len(r2)-1]
+
+            #for i in range(0, len(client_ip)):
+                _children.append(
+                    html.Div(
+                        id=&#34;value-setter-panel-u&#34;,
+                        children=[
+                            html.Div(r,className=&#34;four columns&#34;),
+                            html.Div(r1, className=&#34;four columns&#34;),
+                            html.Div(r2, className=&#34;four columns&#34;),
+                        ],
+                        className=&#34;row&#34;,
+                    )
+                )
+        
+        return _children
+    else:
+        return &#39;&#39;
+
+@app.callback(
+    Output(&#39;value-details-view-output-xx&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, tab_value):
+    if tab_value == &#39;tab2&#39;:
+        return [html.H1(id=&#34;satellite-name&#34;, children=(&#34;Option&#34;))]
+
+@app.callback(
+    Output(&#39;value-details-view-output-x&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, tab_value):
+    if tab_value == &#39;tab2&#39;:
+        time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+
+        #add user, delete user, change user, change psk, enable port forwarding, disable port forwarding
+        _options = [&#39;add user&#39;, &#39;delete user&#39;, &#39;change user&#39;, &#39;change psk&#39;, &#39;assign static ip&#39;,&#39;enable port forwarding&#39;, &#39;disable port forwarding&#39;]
+        #return html.Div()
+        return dcc.Dropdown(
+            id=&#34;metric-select-dropdown2&#34;,
+            options=list(
+                {&#34;label&#34;: param, &#34;value&#34;: param} for param in _options
+            ),
+            value=_options[1],
+        )
+
+@app.callback(
+    Output(&#39;value-details-view-output-y&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#34;metric-select-dropdown2&#34;, &#34;value&#34;), 
+        Input(&#34;app-tabs&#34;, &#34;value&#34;)
+    ]
+    )
+def output(_host, drop_value, tab_value):
+    if tab_value == &#39;tab2&#39;:
+        time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+
+        if drop_value == &#39;add user&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;add_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Username&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;add_user_input&#39;,
+                        children=[dcc.Input(id=&#34;username&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;add_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Password&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;add_user_input&#39;,
+                        children=[dcc.Input(id=&#34;password&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;submit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Add&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        elif drop_value == &#39;delete user&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;del_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Username&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;del_user_input&#39;,
+                        children=[dcc.Input(id=&#34;del_username&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;del_submit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Delete&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        elif drop_value == &#39;change user&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;cha_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Username&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;cha_user_input&#39;,
+                        children=[dcc.Input(id=&#34;cusername&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;cha_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Password&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;cha_user_input&#39;,
+                        children=[dcc.Input(id=&#34;cpassword&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;csubmit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;change&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        elif drop_value == &#39;change psk&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;psk_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;New Pre Shared Key&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;psk_user_input&#39;,
+                        children=[dcc.Input(id=&#34;psk&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;psk_submit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Change&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+            
+        elif drop_value == &#39;assign static ip&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;ip_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Username&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;ip_user_input&#39;,
+                        children=[dcc.Input(id=&#34;susername&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;ip_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Password&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;ip_user_input&#39;,
+                        children=[dcc.Input(id=&#34;spassword&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;ip_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;IP&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;ip_user_input&#39;,
+                        children=[dcc.Input(id=&#34;sIP&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;ssubmit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Submit&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        elif drop_value == &#39;enable port forwarding&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;port_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Client IP&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;port_user_input&#39;,
+                        children=[dcc.Input(id=&#34;client_ip&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;port_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Port&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;port_user_input&#39;,
+                        children=[dcc.Input(id=&#34;port&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;ipsubmit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Enable&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        elif drop_value == &#39;disable port forwarding&#39;:
+            return html.Div(
+                id=&#34;value-setter-panel-uv&#34;,
+                children=[
+                    html.Div(id=&#39;dport_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Client IP&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;dport_user_input&#39;,
+                        children=[dcc.Input(id=&#34;dclient_ip&#34;)],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;dport_users_label&#39;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#39;Port&#39;))],className=&#34;four columns&#34;),
+                    html.Div(id=&#39;dport_user_input&#39;,
+                        children=[dcc.Input(id=&#34;dport&#34;)],className=&#34;four columns&#34;),
+                    html.Button(
+                        id=&#39;dipsubmit-button&#39;,
+                        n_clicks=0,
+                        children=&#39;Disable&#39;,
+                        #style={&#39;fontSize&#39;:28}
+                    ),
+                ],
+                className=&#34;row&#34;,
+            )
+        
+        
+@app.callback(
+    Output(&#39;value-details-view-output-z&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;del_submit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;del_username&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;delete_user&#39;, &#39;username&#39;:v1}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z1&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;submit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;username&#39;, &#39;value&#39;),
+        State(&#39;password&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;add_user&#39;, &#39;username&#39;:v1, &#39;password&#39;:v2}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z2&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;ssubmit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;susername&#39;, &#39;value&#39;),
+        State(&#39;spassword&#39;, &#39;value&#39;),
+        State(&#39;sIP&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2, v3):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            if v3 != None:
+                data=dict()
+                data= {&#39;action&#39;:&#39;assign_static_ip&#39;, &#39;username&#39;:v1, &#39;password&#39;:v2, &#39;ip_address&#39;:v3}
+                jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+
+                try:
+                    sock = socket.socket()
+                except socket.error as err:
+                    print(&#39;Socket error because of %s&#39; %(err))
+
+                try:
+                    sock.connect((server_addr, port))
+                    sock.send(jsonResult)
+                    #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                    print(&#39;DATA SEND SUCCESSFULLY&#39;)
+                except socket.gaierror:
+                    print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z3&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;csubmit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;cusername&#39;, &#39;value&#39;),
+        State(&#39;cpassword&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;change_user&#39;, &#39;username&#39;:v1, &#39;password&#39;:v2}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z4&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;psk_submit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;psk&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;change_psk&#39;, &#39;psk&#39;:v1}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z5&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;ipsubmit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;client_ip&#39;, &#39;value&#39;),
+        State(&#39;port&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;enable_port_forward&#39;, &#39;ip_address&#39;:v1, &#39;port&#39;:v2}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#39;value-details-view-output-z6&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;dipsubmit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;dclient_ip&#39;, &#39;value&#39;),
+        State(&#39;dport&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;disable_port_forward&#39;, &#39;ip_address&#39;:v1, &#39;port&#39;:v2}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)
+
+@app.callback(
+    Output(&#34;panel-upper-lower&#34;, &#34;children&#34;),
+    [Input(&#34;satellite-dropdown-component&#34;, &#34;value&#34;)],
+)
+def update_satellite_name(val):
+    if val == &#34;map_graph&#34;:
+        return map_graph
+    elif val == &#34;server_stats&#34;:
+        return server_statistics
+    else:
+        return vpn_gateways
+
+
+@app.callback(Output(&#39;page-content&#39;, &#39;children&#39;),
+                [Input(&#39;url&#39;, &#39;pathname&#39;)])
+def display_page(pathname):
+    if pathname == &#39;/&#39;:
+        return root_layout
+    #elif pathname ==&#39;/network_config&#39;:
+    #    return network_statistics_page
+    #elif pathname == &#39;/lan_config&#39;:
+    #    return LAN_configuration_page
+
+if __name__ == &#39;__main__&#39;:
+    app.run_server(debug=False, host=&#39;88.80.187.189&#39;)       #app  runs on query server ip</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="dashboard.qeury_server_dashboard.build_tabs"><code class="name flex">
+<span>def <span class="ident">build_tabs</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_tabs():
+    return </code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.convert_to_datetime"><code class="name flex">
+<span>def <span class="ident">convert_to_datetime</span></span>(<span>time_submitted)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_to_datetime(time_submitted):
+    res = []
+    for t in time_submitted:
+        res.append(datetime.fromtimestamp(t).strftime(&#34;%H:%M:%S&#34;) )
+    return res</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.display_page"><code class="name flex">
+<span>def <span class="ident">display_page</span></span>(<span>pathname)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(Output(&#39;page-content&#39;, &#39;children&#39;),
+                [Input(&#39;url&#39;, &#39;pathname&#39;)])
+def display_page(pathname):
+    if pathname == &#39;/&#39;:
+        return root_layout</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.get_network_details"><code class="name flex">
+<span>def <span class="ident">get_network_details</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_network_details():
+    #db_path = &#34;/root/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.output"><code class="name flex">
+<span>def <span class="ident">output</span></span>(<span>_host, n, v1, v2)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(
+    Output(&#39;value-details-view-output-z6&#39;, &#39;children&#39;),
+    [
+        Input(&#34;metric-select-dropdown&#34;, &#34;value&#34;), 
+        Input(&#39;dipsubmit-button&#39;, &#39;n_clicks&#39;)
+    ],
+    [
+        State(&#39;dclient_ip&#39;, &#39;value&#39;),
+        State(&#39;dport&#39;, &#39;value&#39;),
+    ]
+    )
+def output(_host, n, v1, v2):
+    time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports = return_server_details(_host)
+    server_addr = ip_address[len(ip_address)-1]
+    port = 1777
+    
+    if v1 != None:
+        if v2 != None:
+            data=dict()
+            data= {&#39;action&#39;:&#39;disable_port_forward&#39;, &#39;ip_address&#39;:v1, &#39;port&#39;:v2}
+            jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+
+            try:
+                sock = socket.socket()
+            except socket.error as err:
+                print(&#39;Socket error because of %s&#39; %(err))
+
+            try:
+                sock.connect((server_addr, port))
+                sock.send(jsonResult)
+                #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+                print(&#39;DATA SEND SUCCESSFULLY&#39;)
+            except socket.gaierror:
+                print(&#39;There an error resolving the host&#39;)</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.return_gateway_details"><code class="name flex">
+<span>def <span class="ident">return_gateway_details</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def return_gateway_details():
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    network_id, server_ip, username, password, psk, router_ip = [], [], [], [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)
+    for row in cursor:
+        network_id.append(row[0])
+        server_ip.append(row[1])
+        username.append(row[2])
+        password.append(row[3])
+        psk.append(row[4])
+        router_ip.append(row[5])
+    
+    return network_id, server_ip, username, password, psk, router_ip</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.return_server_details"><code class="name flex">
+<span>def <span class="ident">return_server_details</span></span>(<span>host)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def return_server_details(host):
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names, children, network_id = [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+
+    print(&#39;THE HOST : &#39;,host)
+    location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out = [], [], [], [], [], [], [], [], [], [], [], []
+    usernames, passwords, psks, ips = [], [], [], []
+    ip_port, tf_in, tf_out = [], [], []
+    time_submitted, ipsec_status = [], []
+    status, client_ip, ports = [], [], []
+    
+    cursor = db.execute(&#39;SELECT * FROM PORTS WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        ports.append(row[2])
+        client_ip.append(row[3])
+        status.append(row[4])
+
+    #get user info
+    cursor = db.execute(&#39;SELECT * FROM CHAP_SECRETS WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        usernames.append(row[2])
+        passwords.append(row[3])
+        psks.append(row[4]) 
+        ips.append(row[1])
+
+    cursor = db.execute(&#39;SELECT * FROM CLIENT_STATES WHERE hostname =?&#39;, (host,))
+    for row in cursor:
+        ip_port.append(row[1]) 
+        tf_in.append(row[2]) 
+        tf_out.append(row[3])
+    
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS WHERE hostname =?&#39;,(host,))
+    for row in cursor:
+        time_submitted.append(row[0])
+        total_users.append(row[3])
+        traffic_in.append(row[11])
+        traffic_out.append(row[12])
+        min_rtt.append(row[15])
+        avg_rtt.append(row[16])
+        max_rtt.append(row[17])
+        ip_address.append(row[18])
+        cpu.append(row[13])
+        ram.append(row[14])
+        location.append(row[2])
+        pks_recieved.append(row[19])
+        pks_lost.append(row[20])
+        ipsec_status.append(row[21])
+    print(&#39;packet lost : &#39;,pks_lost[len(pks_lost)-1],&#39;packets recieved : &#39;,pks_recieved[len(pks_recieved)-1])
+
+    return time_submitted, location, cpu, ram, pks_recieved, pks_lost, min_rtt, avg_rtt, max_rtt, ip_address, total_users, traffic_in, traffic_out, usernames, passwords, psks, ips, ip_port, tf_in, tf_out, ipsec_status, status, client_ip, ports</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.return_server_stats"><code class="name flex">
+<span>def <span class="ident">return_server_stats</span></span>(<span>toggle)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(Output(&#34;histogram-container-graphs2&#34;, &#39;children&#39;),
+    [
+        Input(&#34;control-panel-toggle-map&#34;, &#34;value&#34;),
+    ])
+def return_server_stats(toggle):
+    #db_path = &#34;/root/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names = []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    for row in cursor:
+        host_names.append(row[1])
+
+    host_names = list(set(host_names))
+    _children =[]
+    #toggle = False
+    if toggle:
+        fig = html.Div(
+                html.Div(
+                    id=&#39;someid&#39;,
+                    children=[
+                        html.Div(
+                            id=&#34;tabs&#34;,
+                            className=&#34;tabs&#34;,
+                            children=[
+                                dcc.Tabs(
+                                    id=&#34;app-tabs&#34;,
+                                    value=&#34;tab2&#34;,
+                                    className=&#34;custom-tabs&#34;,
+                                    children=[
+                                        dcc.Tab(
+                                            id=&#34;Specs-tab&#34;,
+                                            label=&#34;Status Details&#34;,
+                                            value=&#34;tab1&#34;,
+                                            className=&#34;custom-tab&#34;,
+                                            selected_className=&#34;custom-tab--selected&#34;,
+                                        ),
+                                        dcc.Tab(
+                                            id=&#34;Control-chart-tab&#34;,
+                                            label=&#34;Specification Settings&#34;,
+                                            value=&#34;tab2&#34;,
+                                            className=&#34;custom-tab&#34;,
+                                            selected_className=&#34;custom-tab--selected&#34;,
+                                        ),
+                                    ],
+                                )
+                            ],
+                        ),
+            
+                        html.Div(
+                            id=&#39;someid&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;settings-menu&#34;,
+                                    children=[
+                                        html.Div(
+                                            id=&#34;metric-select-menu&#34;,
+                                            # className=&#39;five columns&#39;,
+                                            children=[
+                                                #html.Label(id=&#34;metric-select-title&#34;, children=&#34;Select Server&#34;),
+                                                html.Br(),
+                                                html.Div(
+                                                    id=&#39;dropd1&#39;, 
+                                                    children=[
+                                                        html.Div(
+                                                            id=&#34;value-details-view-output-xx&#34;,children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Server&#34;))], className=&#34;output-datatable&#34;
+                                                        ),
+                                                        dcc.Dropdown(
+                                                            id=&#34;metric-select-dropdown&#34;,
+                                                            options=list(
+                                                                {&#34;label&#34;: param, &#34;value&#34;: param} for param in host_names
+                                                            ),
+                                                            value=host_names[0],
+                                                        ),
+                                                    ]
+                                                ),        
+                                            ],
+                                        ),
+                                        html.Div(
+                                            id=&#34;value-setter-menu&#34;,
+                                            # className=&#39;six columns&#39;,
+                                            children=[
+                                                html.Div(id=&#34;value-setter-panel&#34;),
+                                                html.Br(),
+                                                # html.Div(
+                                                #     id=&#34;button-div&#34;,
+                                                #     children=[
+                                                #         html.Button(&#34;Update&#34;, id=&#34;value-setter-set-btn&#34;),
+                                                #         html.Button(
+                                                #             &#34;View current setup&#34;,
+                                                #             id=&#34;value-setter-view-btn&#34;,
+                                                #             n_clicks=0,
+                                                #         ),
+                                                #     ],
+                                                # ),
+                                                
+                                            ],
+                                        ),
+                        
+                                    ],
+                                ),
+
+        
+                            ]
+                        ),
+                        html.Div(
+                            id=&#34;value-details-view-output&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#34;value-setter-view-output&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#39;dropd1&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output-xx&#34;,children=&#39;&#39;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-x&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#34;value-details-view-output-y&#34;, className=&#34;output-datatable&#34;
+                        ),
+                        html.Div(
+                            id=&#39;hhh&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output-z&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z2&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z3&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z4&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z5&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-details-view-output-z6&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;user-container&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#34;value-details-view-output1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                                html.Div(
+                                    id=&#34;value-setter-view-output1&#34;, className=&#34;output-datatable&#34;
+                                ),
+                            ]
+                        ),
+                        
+                    ]        
+                )
+            )
+   
+        return fig
+    else:
+        return None</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.server_location_on_map"><code class="name flex">
+<span>def <span class="ident">server_location_on_map</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def server_location_on_map():
+    countries = []
+    #db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    for row in cursor:
+        countries.append(row[2])
+
+    countries = list(set(countries))
+    map_data =[]
+    for country in countries:
+        cursor = db.execute(&#39;SELECT * FROM COUNTRY_MAP_LOCATION WHERE country =?&#39;,(country,))
+        for row in cursor:
+            map_data.append(
+                {
+                    &#34;type&#34;: &#34;scattermapbox&#34;,
+                    &#34;lat&#34;: [row[2]],
+                    &#34;lon&#34;: [row[1]],
+                    &#34;hoverinfo&#34;: &#34;text&#34;,
+                    &#34;text&#34;: (row[3]+&#34; &#34;+row[4]),
+                    &#34;mode&#34;: &#34;markers&#34;,
+                    &#34;marker&#34;: {&#34;size&#34;: 10, &#34;color&#34;: &#34;#fec036&#34;},
+                }
+            )
+            print(map_data)
+    return map_data</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.update_gateway_details"><code class="name flex">
+<span>def <span class="ident">update_gateway_details</span></span>(<span>n)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(Output(&#34;gateway-container&#34;, &#39;children&#39;),
+              [Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)])
+def update_gateway_details(n):
+    network_id, server_ip, username, password, psk, router_ip = return_gateway_details()
+    if len(network_id) &gt; 0:
+        _children = []
+        for i in range(0, len(network_id)):
+            _children.append(
+                html.Div(
+                    id=&#39;gateway-panel&#39;,
+                    children=[
+                        html.Div(
+                            id=&#39;gateway-panel-image-div&#39;,
+                            children=[
+                                html.Img(id=&#39;gateway-panel-image&#39;, src=&#39;assets/gateway_image.png&#39;)
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;gateway-panel-details&#39;,
+                            children=[
+                                    html.Div(
+                                        id=&#34;value-setter-panel-header1&#34;,
+                                        children=[
+                                            html.Div(&#39;Network Id&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;VPN Server IP&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;Pre Shared Key&#39;, className=&#34;four columns&#34;),
+                                            html.Div(&#39;Router Ip&#39;, className=&#34;four columns&#34;),
+                                        ],
+                                        className=&#34;row&#34;,
+                                    ),
+
+                                
+                                    html.Div(
+                                        id=&#34;value-setter-panel-u1&#34;,
+                                        children=[
+                                            html.Div(network_id[i],className=&#34;four columns&#34;),
+                                            html.Div(server_ip[i], className=&#34;four columns&#34;),
+                                            html.Div(psk[i], className=&#34;four columns&#34;),
+                                            html.Div(router_ip[i], className=&#34;four columns&#34;),
+                                            ],
+                                        className=&#34;row&#34;,
+                                        )
+                                    
+                            ]
+                        ),
+                    ]
+                )
+            )
+        return _children
+    
+    else:
+        
+        return html.Div(
+               id=&#39;gateway-panel-nimage-div&#39;,
+               children=[
+                   html.Img(id=&#39;gateway-panel-image&#39;, src=&#39;assets/gateway_image_no_found.png&#39;)
+               ]
+            )</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.update_satellite_name"><code class="name flex">
+<span>def <span class="ident">update_satellite_name</span></span>(<span>val)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(
+    Output(&#34;panel-upper-lower&#34;, &#34;children&#34;),
+    [Input(&#34;satellite-dropdown-component&#34;, &#34;value&#34;)],
+)
+def update_satellite_name(val):
+    if val == &#34;map_graph&#34;:
+        return map_graph
+    elif val == &#34;server_stats&#34;:
+        return server_statistics
+    else:
+        return vpn_gateways</code></pre>
+</details>
+</dd>
+<dt id="dashboard.qeury_server_dashboard.update_server_details"><code class="name flex">
+<span>def <span class="ident">update_server_details</span></span>(<span>n)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(Output(&#34;satellite-description&#34;, &#39;children&#39;),
+              [Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)])
+def update_server_details(n):
+    db_path = &#34;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/query_server/vpn_servers.db&#34;
+    host_names, children, network_id, tunnel_count = [], [], [], []
+    db = sqlite3.connect(db_path)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS&#39;)
+    #returns number of servers being tracked
+    for row in cursor:
+        host_names.append(row[1])
+
+    host_names = list(set(host_names))
+    temp = []
+    n_tunnels = 0
+    for __host in host_names:
+        cursor = db.execute(&#39;SELECT * FROM ACCESS_SERVER_STATISTICS WHERE hostname =?&#39;, (__host,))
+        for row in cursor:
+            temp.append(row[3])
+
+        if len(temp) &gt; 0:
+            n_tunnels += int(temp[len(temp)-1])
+
+    servers_count = len(list(set(host_names)))
+    
+    #returns number of networks being tracked
+    cursor = db.execute(&#39;SELECT * FROM REGISTERED_NETWORKS&#39;)
+    for row in cursor:
+        network_id.append(row[0])
+
+    active_networks = 0
+    if len(network_id) &gt; 0:
+        active_networks = len(network_id)
+        
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;VPN servers : &#34;+ str(servers_count)))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Active Networks : &#34;+ str(active_networks)))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;Active Users : &#34;+ str(len(network_id))))]
+        )
+    )
+    children.append(html.Div(
+        id=&#34;xx1&#34;,
+        children=[html.H1(id=&#34;satellite-name&#34;, children=(&#34;PPP Tunnels : &#34;+ str(n_tunnels)))]
+        )
+    )
+    
+    
+    
+    
+    return children</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="dashboard" href="index.html">dashboard</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="dashboard.qeury_server_dashboard.build_tabs" href="#dashboard.qeury_server_dashboard.build_tabs">build_tabs</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.convert_to_datetime" href="#dashboard.qeury_server_dashboard.convert_to_datetime">convert_to_datetime</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.display_page" href="#dashboard.qeury_server_dashboard.display_page">display_page</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.get_network_details" href="#dashboard.qeury_server_dashboard.get_network_details">get_network_details</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.output" href="#dashboard.qeury_server_dashboard.output">output</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.return_gateway_details" href="#dashboard.qeury_server_dashboard.return_gateway_details">return_gateway_details</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.return_server_details" href="#dashboard.qeury_server_dashboard.return_server_details">return_server_details</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.return_server_stats" href="#dashboard.qeury_server_dashboard.return_server_stats">return_server_stats</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.server_location_on_map" href="#dashboard.qeury_server_dashboard.server_location_on_map">server_location_on_map</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.update_gateway_details" href="#dashboard.qeury_server_dashboard.update_gateway_details">update_gateway_details</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.update_satellite_name" href="#dashboard.qeury_server_dashboard.update_satellite_name">update_satellite_name</a></code></li>
+<li><code><a title="dashboard.qeury_server_dashboard.update_server_details" href="#dashboard.qeury_server_dashboard.update_server_details">update_server_details</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
