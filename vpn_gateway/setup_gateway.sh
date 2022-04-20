@@ -7,6 +7,8 @@ apt-get upgrade -y
 apt-get install strongswan xl2tpd net-tools -y
 apt-get install python-pip3 -y
 pip3 install pustil
+apt-get install libpq-dev python-dev -y
+pip3 install -r requirements.txt
 
 echo ">> STEP 2 OF 6: CONFIGURING VPN SCRIPTS"
 cat > /etc/ipsec.conf <<EOF
@@ -56,13 +58,13 @@ name "vpnuser2"
 password "12345678"
 EOF
 
-chmod 600 /etc/ppp/options.l2tpd.client
+# chmod 600 /etc/ppp/options.l2tpd.client
 
-mkdir -p /var/run/xl2tpd
-touch /var/run/xl2tpd/l2tp-control
+# mkdir -p /var/run/xl2tpd
+# touch /var/run/xl2tpd/l2tp-control
 
-service ipsec restart
-service xl2tpd restart
+# service ipsec restart
+# service xl2tpd restart
 echo ">> STEP 3 OF 6: CONNECTING TO THE VPN"
 ipsec up gateway_vpn
 
@@ -72,9 +74,9 @@ echo "c gateway_vpn" > /var/run/xl2tpd/l2tp-control
 echo ">> STEP 4 OF 6: SETTING DEFAULT ROUTES"
 ip route
 
-route add 107.172.197.127 gw 192.168.43.1
+# route add 107.172.197.127 gw 192.168.43.1
 
-route add default dev ppp0
+# route add default dev ppp0
 
 wget -qO- http://ipv4.icanhazip.com; echo
 
@@ -101,23 +103,23 @@ service dnsmasq restart
 
 echo ">> STEP 6 OF 6: SETTING UP IPTABLES AND IP FORWARDING"
 
-#configuring ip forwarding and iptable rules
-echo 1 > /proc/sys/net/ipv4/ip_forward
+# #configuring ip forwarding and iptable rules
+# echo 1 > /proc/sys/net/ipv4/ip_forward
 
-sysclt -p
+# sysclt -p
 
-apt-get install iptables -y
+# apt-get install iptables -y
 
-iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
-iptables -A FORWARD -i eth0 -o ppp0 -j ACCEPT
-iptables -A FORWARD -i ppp0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A INPUT -i eth0 -p icmp -j ACCEPT
-iptables -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
+# iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+# iptables -A FORWARD -i eth0 -o ppp0 -j ACCEPT
+# iptables -A FORWARD -i ppp0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+# iptables -A INPUT -i lo -j ACCEPT
+# iptables -A INPUT -i eth0 -p icmp -j ACCEPT
+# iptables -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
 
-#port forwarding to redirect any packet destined for port 80 to the internal private ip
-iptables -t nat -A PREROUTING -i ppp0 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.130
-iptables -t nat -A POSTROUTING -o eth0 -p tcp --dport 80 -d 192.168.1.130 -j SNAT --to-source 192.168.1.2
+# #port forwarding to redirect any packet destined for port 80 to the internal private ip
+# iptables -t nat -A PREROUTING -i ppp0 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.130
+# iptables -t nat -A POSTROUTING -o eth0 -p tcp --dport 80 -d 192.168.1.130 -j SNAT --to-source 192.168.1.2
 
 
 

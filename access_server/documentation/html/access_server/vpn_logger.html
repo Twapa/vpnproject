@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>access_server.vpn_logger API documentation</title>
+<meta name="description" content="THIS SCRIPT SHOULD BE HOSTED ON THE VPN SERVER" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>access_server.vpn_logger</code></h1>
+</header>
+<section id="section-intro">
+<p>THIS SCRIPT SHOULD BE HOSTED ON THE VPN SERVER</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+THIS SCRIPT SHOULD BE HOSTED ON THE VPN SERVER
+&#39;&#39;&#39;
+import subprocess
+import time
+import socket
+import sys
+import json
+import psutil
+import threading
+import platform
+import requests
+import sqlite3
+import db_query
+
+root_path = &#39;/root/test_folder/access_server/&#39;      #for final deployment
+root_path = &#39;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/access_server&#39; #for development testing
+db = sqlite3.connect(root_path+&#39;vpn_servers.db&#39;)
+#res1 = subprocess.run([root_path+&#34;logtraffic.sh&#34;], shell=True)
+# program that executes a bash script that logs
+# the current state of VPN connections every one minute
+def log_connections(_seconds):
+    while True:
+        print(&#39;Running step1&#39;)
+        res1 = subprocess.run([root_path+&#34;logtraffic.sh&#34;], shell=True)
+        print(&#39;Return code :&#39;,res1.returncode)
+        time.sleep(_seconds)
+
+def send_to_query_server(data:dict, server_addr, port):
+    #send key performance metrics, connection statistics to the query server
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+
+    try:
+        sock.connect((server_addr, port))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)
+
+def process_text():                 #extras status infomation from text files
+        clients = []
+        res = dict()
+    
+        ipsec_status = open(&#39;/root/logfiles/ipsecservicestatus.txt&#39;, &#39;r&#39;).readlines()
+        res[&#39;ipsec_status&#39;] = &#39;Active&#39; #ipsec_status[0].split(&#39;:&#39;)[0].split(&#39;     &#39;)[1]
+        trafficstatus_file = open(&#39;trafficstatus.txt&#39;, &#39;r&#39;).readlines()
+        if len(trafficstatus_file) &gt; 0:
+            for i in trafficstatus_file:
+                client = []
+                temp = i.split(&#39; &#39;)[2].split(&#39;[&#39;)[0]                           #connection protocol
+                client.append(temp[1:len(temp)-1])
+                client.append(i.split(&#39;]&#39;)[1].split(&#39;,&#39;)[0])                   #ip address
+                client.append(i.split(&#39;type=&#39;)[1].split(&#39;,&#39;)[0])               #connection type
+                client.append(i.split(&#39;add_time=&#39;)[1].split(&#39;,&#39;)[0])           #add time
+                client.append(i.split(&#39;inBytes=&#39;)[1].split(&#39;,&#39;)[0])            #bytes sent to the server
+                client.append(i.split(&#39;outBytes=&#39;)[1].split(&#39;,&#39;)[0])           #bytes sent from server
+                temp = i.split(&#39;id=&#39;)[1].split(&#39;,&#39;)[0]                         #client ip address
+                client.append(temp[1:len(temp)-2])
+
+                clients.append(client)
+            res[&#39;clients&#39;] = clients
+        else:
+            res[&#39;clients&#39;] = []
+
+
+        briefstatus_file = open(&#39;/root/logfiles/status.txt&#39;, &#39;r&#39;).readlines()
+
+        #IPsec security associations
+        briefstatus_file[2]
+        res[&#39;ipsec_total_users&#39;] = int(briefstatus_file[2].split(&#39;total&#39;)[1][1])
+        res[&#39;ipsec_authenticated_users&#39;] = int(briefstatus_file[2].split(&#39;authenticated&#39;)[1][1])
+        res[&#39;ipsec_anonymous_users&#39;] = int(briefstatus_file[2].split(&#39;anonymous&#39;)[1][1])
+
+        #IKEv2 security associations
+        briefstatus_file[1]
+        res[&#39;ikev2_total_certs&#39;] = int(briefstatus_file[1].split(&#39;total&#39;)[1][1])
+        res[&#39;ike_half_open_certs&#39;] = int(briefstatus_file[1].split(&#39;half-open&#39;)[1][1])
+        res[&#39;ikev2_open_conn&#39;] = int(briefstatus_file[1].split(&#39;open&#39;)[2][1])
+        res[&#39;ikev2_authenticated_users&#39;] = int(briefstatus_file[1].split(&#39;authenticated&#39;)[1][1])
+        res[&#39;ikev2_anonymous_users&#39;] = int(briefstatus_file[1].split(&#39;anonymous&#39;)[1][1])
+
+        netstat_data = open(&#39;/root/logfiles/netstat.txt&#39;, &#39;r&#39;).readlines()[0:9]
+        if len(netstat_data) &gt; 0:
+            for text in netstat_data:
+                if &#39;dropped&#39; in text:
+                    res[&#39;dropped_packets&#39;] = int(text.split(&#39;dropped&#39;)[0])
+                else:
+                    res[&#39;dropped_packets&#39;] = 0
+                
+                if &#39;total packets received&#39; in text:
+                    res[&#39;total_packets_received&#39;] = int(text.split(&#39;total&#39;)[0])
+                else:
+                    res[&#39;total_packets_received&#39;] = 0
+        else:
+            res[&#39;dropped_packets&#39;] = 0
+            res[&#39;total_packets_received&#39;] = 0
+
+
+        states_file = open(&#39;/root/logfiles/states.txt&#39;, &#39;r&#39;).readlines()
+        ip_port, traffic_data = [], []
+        for item in states_file:
+            if &#39;IPsec SA established&#39; in item:
+                ip_port.append(item.split(&#39;]&#39;)[1].split(&#39; &#39;)[1])        #ip address and port
+            if &#39;Traffic&#39; in item:
+                traffic_data.append(
+                    [item.split(&#39;]&#39;)[1].split(&#39;Traffic&#39;)[1].split(&#39;ESPin=&#39;)[1].split(&#39; &#39;)[0],     #traffic in
+                    item.split(&#39;]&#39;)[1].split(&#39;Traffic&#39;)[1].split(&#39;ESPout=&#39;)[1].split(&#39; &#39;)[0]]     #traffic out
+                )
+        
+        _clients = []
+        if len(ip_port) &gt; 0:
+            for i in range(0, len(ip_port)):
+                _clients.append([ip_port[i], traffic_data[i][0], traffic_data[i][1]])
+        res[&#39;client_states&#39;] = _clients
+
+        return res
+    
+
+def get_bandwidth():        #returns the total bytes sent and recieved by the server
+    # Get net in/out
+    net1_out = psutil.net_io_counters().bytes_sent
+    net1_in = psutil.net_io_counters().bytes_recv
+
+    time.sleep(1)
+
+    # Get new net in/out
+    net2_out = psutil.net_io_counters().bytes_sent
+    net2_in = psutil.net_io_counters().bytes_recv
+
+    # Compare and get current speed
+    if net1_in &gt; net2_in:
+        current_in = 0
+    else:
+        current_in = net2_in - net1_in
+
+    if net1_out &gt; net2_out:
+        current_out = 0
+    else:
+        current_out = net2_out - net1_out
+
+    network = {&#34;traffic_in&#34; : current_in, &#34;traffic_out&#34; : current_out}
+    return network 
+
+def get_cpu_ram_usage(_time_interval):      #returns cpu and ram usage
+    cpu_percent = psutil.cpu_percent(_time_interval)    #measured over a specific time interval
+    ram_percent = psutil.virtual_memory()[2]
+    usage = {&#34;cpu_percent&#34;:cpu_percent, &#34;ram_percent&#34;:ram_percent}
+    return usage
+
+def get_open_port(root_path):
+    return db_query.get_open_port(root_path)
+    
+
+def measure_latency():
+    # this function attempts to measure minimum, average and maximum 
+    # round trip time (rtt) by pinging any of the vpn client ips
+
+    # implement a method of finding out one of the client&#39;s virtual ip to ping with
+    # the ip provided is just an example ip used to test the functionality of the function
+
+    ip_address = &#39;216.58.223.132&#39;           #google.com&#39;s ip address
+    p = subprocess.Popen([&#34;ping&#34;,&#34;-c&#34;,&#34;4&#34;,ip_address], stdout = subprocess.PIPE)
+    res = p.communicate()[0].decode(&#39;ascii&#39;)
+    values = res.split(&#39;mdev&#39;)[1].split(&#39;/&#39;)
+    min_rtt = float(values[0].split(&#39;=&#39;)[1])
+    avg_rtt = float(values[1])
+    max_rtt = float(values[2])
+
+    return {&#34;min_rtt&#34;:min_rtt,&#34;avg_rtt&#34;:avg_rtt,&#34;max_rtt&#34;:max_rtt}
+    
+
+def send_statistics(time_interval, server_addr, port):
+    #time_interval = 60
+    while True:
+        #get all server stats
+        usage = get_cpu_ram_usage(5)
+        bandwidth = get_bandwidth()
+        net_stats = measure_latency()
+        data = process_text()
+        
+        #data.update({&#34;hostname&#34;:platform.node()})
+        data.update({&#34;time_submitted&#34;:int(time.time())})
+        data.update(usage)
+        data.update(bandwidth)
+        data.update(net_stats)
+        data.update(requests.get(&#39;http://ipinfo.io/json&#39;).json())       #gets the location of the server
+        data.update({&#34;datatype&#34;:&#39;linux&#39;})
+        
+        data.update(get_open_port(root_path))
+
+        chap_secrets_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+        data.update({&#34;chap_secrets&#34;: chap_secrets_file.readlines()})
+        chap_secrets_file.close()
+
+        psk_secret_file = open(&#39;/etc/ipsec.secrets&#39;, &#39;r&#39;) 
+        data.update({&#34;psk&#34;:psk_secret_file.readlines()[0].split(&#39;PSK&#39;)[1].split(&#34;\&#34;&#34;)[1]})
+        psk_secret_file.close()
+        print(&#39;data&#39;,data)
+        #send to query server
+        send_to_query_server(data, server_addr, port)
+        time.sleep(time_interval)
+        
+def vpn_listener():
+    sock = socket.socket()
+    print(&#34;Socket VPN access servers created ...&#34;)
+
+    port = 1777
+    sock.bind((&#39;&#39;, port))
+    sock.listen(1)
+
+    print(&#39;socket is listening&#39;)
+
+    while True:
+        connection, addr = sock.accept()
+        print(&#39;got connection from &#39;, addr)
+
+        recieved_data = json.loads(connection.recv(1024).decode(&#39;ascii&#39;))
+        print(&#34;Json received --&gt;&#34;, recieved_data)
+
+        #Managing VPN Users
+        if recieved_data[&#39;action&#39;] == &#39;add_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; *&#39;) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;delete_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;change_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; *&#39;) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;change_psk&#39;:
+            psk_secret_file = open(&#39;/etc/ipsec.secrets&#39;, &#39;w&#39;)
+            psk_secret_file.write(&#39;%any  %any  : PSK \&#34;&#39;+recieved_data[&#39;psk&#39;]+&#39;\&#34;&#39;)
+            psk_secret_file.close()
+
+            res1 = subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+            res2 = subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+            if res1.returncode ==0 and res2.returncode ==0:
+                pass
+
+        # Network Configuration
+        elif recieved_data[&#39;action&#39;] == &#39;assign_static_ip&#39;:             #assigns a static ip address to a specific vpn user 
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; &#39;+recieved_data[&#39;ip_address&#39;]) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;enable_port_forward&#39;:
+            try:
+                file = open(&#34;/root/vpn_server/port_forwarding.sh&#34;,&#34;w&#34;)
+                file.write(&#34;iiptables -I FORWARD 2 -i eth0 -o ppp+ -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j ACCEPT\n&#34;)
+                file.write(&#34;iptables -t nat -A PREROUTING -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j DNAT --to &#34;+recieved_data[&#39;ip_address&#39;]+&#34;\n&#34;)
+                file.close()
+
+
+                db.execute(&#39;INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;], &#39;open&#39;))
+                db.commit()
+
+                res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                if res.returncode ==0 and res2.returncode ==0:
+                    pass
+            except:
+                pass
+        
+        elif recieved_data[&#39;action&#39;] == &#39;disable_port_forward&#39;:
+            try:
+                file = open(root_path+&#34;port_forwarding.sh&#34;,&#34;w&#34;)
+                file.write(&#34;iiptables -D FORWARD 2 -i eth0 -o ppp+ -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j ACCEPT\n&#34;)
+                file.write(&#34;iptables -t nat -D PREROUTING -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j DNAT --to &#34;+recieved_data[&#39;ip_address&#39;]+&#34;\n&#34;)
+                file.close()
+
+                #db.execute(&#39;INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;], &#39;closed&#39;))
+                db.execute(&#39;DELETE FROM PORTS WHERE port_number =? AND client_ip =?&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;]))
+                db.commit()
+
+                res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                if res.returncode ==0 and res2.returncode ==0:
+                    pass
+            except:
+                pass
+
+def run():
+    query_server_ip = input(&#39;Enter query servery IP address   : &#39;)
+    query_server_port = int(input(&#39;Enter query servery IP port     : &#39;))
+    time_interval = int(input(&#39;Send statistics after (seconds) : &#39;))
+
+    thread_list = []
+    t1 = threading.Thread(target=log_connections, args=(time_interval,), daemon=True)
+    t2 = threading.Thread(target=send_statistics, args=(time_interval,query_server_ip,query_server_port), daemon=True)
+    thread_list.append(t1)
+    thread_list.append(t2)
+    t1.start() 
+    t2.start()
+
+    while True:
+        for _thread in thread_list:
+            if _thread.is_alive() == False:
+                sys.exit()
+
+        time.sleep(10)
+
+if __name__ == &#39;__main__&#39;:
+    run()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="access_server.vpn_logger.get_bandwidth"><code class="name flex">
+<span>def <span class="ident">get_bandwidth</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_bandwidth():        #returns the total bytes sent and recieved by the server
+    # Get net in/out
+    net1_out = psutil.net_io_counters().bytes_sent
+    net1_in = psutil.net_io_counters().bytes_recv
+
+    time.sleep(1)
+
+    # Get new net in/out
+    net2_out = psutil.net_io_counters().bytes_sent
+    net2_in = psutil.net_io_counters().bytes_recv
+
+    # Compare and get current speed
+    if net1_in &gt; net2_in:
+        current_in = 0
+    else:
+        current_in = net2_in - net1_in
+
+    if net1_out &gt; net2_out:
+        current_out = 0
+    else:
+        current_out = net2_out - net1_out
+
+    network = {&#34;traffic_in&#34; : current_in, &#34;traffic_out&#34; : current_out}
+    return network </code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.get_cpu_ram_usage"><code class="name flex">
+<span>def <span class="ident">get_cpu_ram_usage</span></span>(<span>_time_interval)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_cpu_ram_usage(_time_interval):      #returns cpu and ram usage
+    cpu_percent = psutil.cpu_percent(_time_interval)    #measured over a specific time interval
+    ram_percent = psutil.virtual_memory()[2]
+    usage = {&#34;cpu_percent&#34;:cpu_percent, &#34;ram_percent&#34;:ram_percent}
+    return usage</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.get_open_port"><code class="name flex">
+<span>def <span class="ident">get_open_port</span></span>(<span>root_path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_open_port(root_path):
+    return db_query.get_open_port(root_path)</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.log_connections"><code class="name flex">
+<span>def <span class="ident">log_connections</span></span>(<span>_seconds)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log_connections(_seconds):
+    while True:
+        print(&#39;Running step1&#39;)
+        res1 = subprocess.run([root_path+&#34;logtraffic.sh&#34;], shell=True)
+        print(&#39;Return code :&#39;,res1.returncode)
+        time.sleep(_seconds)</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.measure_latency"><code class="name flex">
+<span>def <span class="ident">measure_latency</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def measure_latency():
+    # this function attempts to measure minimum, average and maximum 
+    # round trip time (rtt) by pinging any of the vpn client ips
+
+    # implement a method of finding out one of the client&#39;s virtual ip to ping with
+    # the ip provided is just an example ip used to test the functionality of the function
+
+    ip_address = &#39;216.58.223.132&#39;           #google.com&#39;s ip address
+    p = subprocess.Popen([&#34;ping&#34;,&#34;-c&#34;,&#34;4&#34;,ip_address], stdout = subprocess.PIPE)
+    res = p.communicate()[0].decode(&#39;ascii&#39;)
+    values = res.split(&#39;mdev&#39;)[1].split(&#39;/&#39;)
+    min_rtt = float(values[0].split(&#39;=&#39;)[1])
+    avg_rtt = float(values[1])
+    max_rtt = float(values[2])
+
+    return {&#34;min_rtt&#34;:min_rtt,&#34;avg_rtt&#34;:avg_rtt,&#34;max_rtt&#34;:max_rtt}</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.process_text"><code class="name flex">
+<span>def <span class="ident">process_text</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process_text():                 #extras status infomation from text files
+        clients = []
+        res = dict()
+    
+        ipsec_status = open(&#39;/root/logfiles/ipsecservicestatus.txt&#39;, &#39;r&#39;).readlines()
+        res[&#39;ipsec_status&#39;] = &#39;Active&#39; #ipsec_status[0].split(&#39;:&#39;)[0].split(&#39;     &#39;)[1]
+        trafficstatus_file = open(&#39;trafficstatus.txt&#39;, &#39;r&#39;).readlines()
+        if len(trafficstatus_file) &gt; 0:
+            for i in trafficstatus_file:
+                client = []
+                temp = i.split(&#39; &#39;)[2].split(&#39;[&#39;)[0]                           #connection protocol
+                client.append(temp[1:len(temp)-1])
+                client.append(i.split(&#39;]&#39;)[1].split(&#39;,&#39;)[0])                   #ip address
+                client.append(i.split(&#39;type=&#39;)[1].split(&#39;,&#39;)[0])               #connection type
+                client.append(i.split(&#39;add_time=&#39;)[1].split(&#39;,&#39;)[0])           #add time
+                client.append(i.split(&#39;inBytes=&#39;)[1].split(&#39;,&#39;)[0])            #bytes sent to the server
+                client.append(i.split(&#39;outBytes=&#39;)[1].split(&#39;,&#39;)[0])           #bytes sent from server
+                temp = i.split(&#39;id=&#39;)[1].split(&#39;,&#39;)[0]                         #client ip address
+                client.append(temp[1:len(temp)-2])
+
+                clients.append(client)
+            res[&#39;clients&#39;] = clients
+        else:
+            res[&#39;clients&#39;] = []
+
+
+        briefstatus_file = open(&#39;/root/logfiles/status.txt&#39;, &#39;r&#39;).readlines()
+
+        #IPsec security associations
+        briefstatus_file[2]
+        res[&#39;ipsec_total_users&#39;] = int(briefstatus_file[2].split(&#39;total&#39;)[1][1])
+        res[&#39;ipsec_authenticated_users&#39;] = int(briefstatus_file[2].split(&#39;authenticated&#39;)[1][1])
+        res[&#39;ipsec_anonymous_users&#39;] = int(briefstatus_file[2].split(&#39;anonymous&#39;)[1][1])
+
+        #IKEv2 security associations
+        briefstatus_file[1]
+        res[&#39;ikev2_total_certs&#39;] = int(briefstatus_file[1].split(&#39;total&#39;)[1][1])
+        res[&#39;ike_half_open_certs&#39;] = int(briefstatus_file[1].split(&#39;half-open&#39;)[1][1])
+        res[&#39;ikev2_open_conn&#39;] = int(briefstatus_file[1].split(&#39;open&#39;)[2][1])
+        res[&#39;ikev2_authenticated_users&#39;] = int(briefstatus_file[1].split(&#39;authenticated&#39;)[1][1])
+        res[&#39;ikev2_anonymous_users&#39;] = int(briefstatus_file[1].split(&#39;anonymous&#39;)[1][1])
+
+        netstat_data = open(&#39;/root/logfiles/netstat.txt&#39;, &#39;r&#39;).readlines()[0:9]
+        if len(netstat_data) &gt; 0:
+            for text in netstat_data:
+                if &#39;dropped&#39; in text:
+                    res[&#39;dropped_packets&#39;] = int(text.split(&#39;dropped&#39;)[0])
+                else:
+                    res[&#39;dropped_packets&#39;] = 0
+                
+                if &#39;total packets received&#39; in text:
+                    res[&#39;total_packets_received&#39;] = int(text.split(&#39;total&#39;)[0])
+                else:
+                    res[&#39;total_packets_received&#39;] = 0
+        else:
+            res[&#39;dropped_packets&#39;] = 0
+            res[&#39;total_packets_received&#39;] = 0
+
+
+        states_file = open(&#39;/root/logfiles/states.txt&#39;, &#39;r&#39;).readlines()
+        ip_port, traffic_data = [], []
+        for item in states_file:
+            if &#39;IPsec SA established&#39; in item:
+                ip_port.append(item.split(&#39;]&#39;)[1].split(&#39; &#39;)[1])        #ip address and port
+            if &#39;Traffic&#39; in item:
+                traffic_data.append(
+                    [item.split(&#39;]&#39;)[1].split(&#39;Traffic&#39;)[1].split(&#39;ESPin=&#39;)[1].split(&#39; &#39;)[0],     #traffic in
+                    item.split(&#39;]&#39;)[1].split(&#39;Traffic&#39;)[1].split(&#39;ESPout=&#39;)[1].split(&#39; &#39;)[0]]     #traffic out
+                )
+        
+        _clients = []
+        if len(ip_port) &gt; 0:
+            for i in range(0, len(ip_port)):
+                _clients.append([ip_port[i], traffic_data[i][0], traffic_data[i][1]])
+        res[&#39;client_states&#39;] = _clients
+
+        return res</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run():
+    query_server_ip = input(&#39;Enter query servery IP address   : &#39;)
+    query_server_port = int(input(&#39;Enter query servery IP port     : &#39;))
+    time_interval = int(input(&#39;Send statistics after (seconds) : &#39;))
+
+    thread_list = []
+    t1 = threading.Thread(target=log_connections, args=(time_interval,), daemon=True)
+    t2 = threading.Thread(target=send_statistics, args=(time_interval,query_server_ip,query_server_port), daemon=True)
+    thread_list.append(t1)
+    thread_list.append(t2)
+    t1.start() 
+    t2.start()
+
+    while True:
+        for _thread in thread_list:
+            if _thread.is_alive() == False:
+                sys.exit()
+
+        time.sleep(10)</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.send_statistics"><code class="name flex">
+<span>def <span class="ident">send_statistics</span></span>(<span>time_interval, server_addr, port)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_statistics(time_interval, server_addr, port):
+    #time_interval = 60
+    while True:
+        #get all server stats
+        usage = get_cpu_ram_usage(5)
+        bandwidth = get_bandwidth()
+        net_stats = measure_latency()
+        data = process_text()
+        
+        #data.update({&#34;hostname&#34;:platform.node()})
+        data.update({&#34;time_submitted&#34;:int(time.time())})
+        data.update(usage)
+        data.update(bandwidth)
+        data.update(net_stats)
+        data.update(requests.get(&#39;http://ipinfo.io/json&#39;).json())       #gets the location of the server
+        data.update({&#34;datatype&#34;:&#39;linux&#39;})
+        
+        data.update(get_open_port(root_path))
+
+        chap_secrets_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+        data.update({&#34;chap_secrets&#34;: chap_secrets_file.readlines()})
+        chap_secrets_file.close()
+
+        psk_secret_file = open(&#39;/etc/ipsec.secrets&#39;, &#39;r&#39;) 
+        data.update({&#34;psk&#34;:psk_secret_file.readlines()[0].split(&#39;PSK&#39;)[1].split(&#34;\&#34;&#34;)[1]})
+        psk_secret_file.close()
+        print(&#39;data&#39;,data)
+        #send to query server
+        send_to_query_server(data, server_addr, port)
+        time.sleep(time_interval)</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.send_to_query_server"><code class="name flex">
+<span>def <span class="ident">send_to_query_server</span></span>(<span>data: dict, server_addr, port)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_to_query_server(data:dict, server_addr, port):
+    #send key performance metrics, connection statistics to the query server
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+
+    try:
+        sock.connect((server_addr, port))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)</code></pre>
+</details>
+</dd>
+<dt id="access_server.vpn_logger.vpn_listener"><code class="name flex">
+<span>def <span class="ident">vpn_listener</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def vpn_listener():
+    sock = socket.socket()
+    print(&#34;Socket VPN access servers created ...&#34;)
+
+    port = 1777
+    sock.bind((&#39;&#39;, port))
+    sock.listen(1)
+
+    print(&#39;socket is listening&#39;)
+
+    while True:
+        connection, addr = sock.accept()
+        print(&#39;got connection from &#39;, addr)
+
+        recieved_data = json.loads(connection.recv(1024).decode(&#39;ascii&#39;))
+        print(&#34;Json received --&gt;&#34;, recieved_data)
+
+        #Managing VPN Users
+        if recieved_data[&#39;action&#39;] == &#39;add_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; *&#39;) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;delete_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;change_user&#39;:
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; *&#39;) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;change_psk&#39;:
+            psk_secret_file = open(&#39;/etc/ipsec.secrets&#39;, &#39;w&#39;)
+            psk_secret_file.write(&#39;%any  %any  : PSK \&#34;&#39;+recieved_data[&#39;psk&#39;]+&#39;\&#34;&#39;)
+            psk_secret_file.close()
+
+            res1 = subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+            res2 = subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+            if res1.returncode ==0 and res2.returncode ==0:
+                pass
+
+        # Network Configuration
+        elif recieved_data[&#39;action&#39;] == &#39;assign_static_ip&#39;:             #assigns a static ip address to a specific vpn user 
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;r&#39;)
+            user_list = user_file.readlines()
+            if len(user_list) &gt; 0:
+                for _user in user_list:
+                    if recieved_data[&#39;username&#39;] in _user:
+                        user_list.remove(_user)
+                        user_file.close()
+
+                user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;w&#39;)
+                for _user in user_list:
+                    user_file.write(_user)
+                user_file.close()
+
+            user_file = open(&#39;/etc/ppp/chap-secrets&#39;, &#39;a&#39;)
+            user_file.write(&#39;\n\&#34;&#39;+recieved_data[&#39;username&#39;]+&#39;\&#34; l2tpd \&#34;&#39;+recieved_data[&#39;password&#39;]+&#39;\&#34; &#39;+recieved_data[&#39;ip_address&#39;]) 
+            user_file.close()
+
+        elif recieved_data[&#39;action&#39;] == &#39;enable_port_forward&#39;:
+            try:
+                file = open(&#34;/root/vpn_server/port_forwarding.sh&#34;,&#34;w&#34;)
+                file.write(&#34;iiptables -I FORWARD 2 -i eth0 -o ppp+ -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j ACCEPT\n&#34;)
+                file.write(&#34;iptables -t nat -A PREROUTING -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j DNAT --to &#34;+recieved_data[&#39;ip_address&#39;]+&#34;\n&#34;)
+                file.close()
+
+
+                db.execute(&#39;INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;], &#39;open&#39;))
+                db.commit()
+
+                res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                if res.returncode ==0 and res2.returncode ==0:
+                    pass
+            except:
+                pass
+        
+        elif recieved_data[&#39;action&#39;] == &#39;disable_port_forward&#39;:
+            try:
+                file = open(root_path+&#34;port_forwarding.sh&#34;,&#34;w&#34;)
+                file.write(&#34;iiptables -D FORWARD 2 -i eth0 -o ppp+ -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j ACCEPT\n&#34;)
+                file.write(&#34;iptables -t nat -D PREROUTING -p tcp --dport &#34;+recieved_data[&#39;port&#39;]+&#34; -j DNAT --to &#34;+recieved_data[&#39;ip_address&#39;]+&#34;\n&#34;)
+                file.close()
+
+                #db.execute(&#39;INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;], &#39;closed&#39;))
+                db.execute(&#39;DELETE FROM PORTS WHERE port_number =? AND client_ip =?&#39;, (recieved_data[&#39;port&#39;], recieved_data[&#39;ip_address&#39;]))
+                db.commit()
+
+                res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+                if res.returncode ==0 and res2.returncode ==0:
+                    pass
+            except:
+                pass</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="access_server" href="index.html">access_server</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="access_server.vpn_logger.get_bandwidth" href="#access_server.vpn_logger.get_bandwidth">get_bandwidth</a></code></li>
+<li><code><a title="access_server.vpn_logger.get_cpu_ram_usage" href="#access_server.vpn_logger.get_cpu_ram_usage">get_cpu_ram_usage</a></code></li>
+<li><code><a title="access_server.vpn_logger.get_open_port" href="#access_server.vpn_logger.get_open_port">get_open_port</a></code></li>
+<li><code><a title="access_server.vpn_logger.log_connections" href="#access_server.vpn_logger.log_connections">log_connections</a></code></li>
+<li><code><a title="access_server.vpn_logger.measure_latency" href="#access_server.vpn_logger.measure_latency">measure_latency</a></code></li>
+<li><code><a title="access_server.vpn_logger.process_text" href="#access_server.vpn_logger.process_text">process_text</a></code></li>
+<li><code><a title="access_server.vpn_logger.run" href="#access_server.vpn_logger.run">run</a></code></li>
+<li><code><a title="access_server.vpn_logger.send_statistics" href="#access_server.vpn_logger.send_statistics">send_statistics</a></code></li>
+<li><code><a title="access_server.vpn_logger.send_to_query_server" href="#access_server.vpn_logger.send_to_query_server">send_to_query_server</a></code></li>
+<li><code><a title="access_server.vpn_logger.vpn_listener" href="#access_server.vpn_logger.vpn_listener">vpn_listener</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

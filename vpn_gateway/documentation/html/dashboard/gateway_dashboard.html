@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>dashboard.gateway_dashboard API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>dashboard.gateway_dashboard</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import dash
+import dash_html_components as html
+import dash_core_components as dcc
+import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+import plotly.offline as pyo
+import plotly.graph_objects as go
+from plotly import tools
+import socket
+import gateway_config as gc
+import dash_daq as daq
+import time
+import random
+import subprocess
+
+#vpn data usage, up speed, down speed, connected devices, vpn server, forwarded ports, cpu, ram usage, uptime
+#query_vpn_network, connect_vpn, disconnect_vpn, reset_vpn, initialise_vpn
+#enable_port_forwarding, change_dhcp_config, connect_ssid
+
+app = dash.Dash(__name__)
+app.config[&#39;suppress_callback_exceptions&#39;]= True
+
+app.layout = html.Div([
+    # represents the URL bar, doesn&#39;t render anything
+    dcc.Location(id=&#39;url&#39;, refresh=False),
+    dcc.Interval(
+        id=&#39;interval-component&#39;,
+        interval=3000, # 6000 milliseconds = 6 seconds
+        n_intervals=0
+    ),
+    # content will be rendered in this element
+    html.Div(id=&#39;page-content&#39;),
+    html.Div(id=&#39;dummy-div&#39;)
+])
+
+tx = html.Div(
+    id=&#34;control-panel-speed&#34;,
+    children=[
+        daq.Gauge(
+            id=&#34;control-panel-speed-component&#34;,
+            label=&#34;Upload&#34;,
+            min=0,
+            max=1000,
+            showCurrentValue=True,
+            value=0,
+            size=175,
+            units=&#34;kbps&#34;,
+            color=&#34;#fec036&#34;,
+        )
+    ],
+    n_clicks=0,
+)
+
+rx = html.Div(
+    id=&#34;control-panel-speed1&#34;,
+    children=[
+        daq.Gauge(
+            id=&#34;control-panel-speed-component2&#34;,
+            label=&#34;Download&#34;,
+            min=0,
+            max=1000,
+            showCurrentValue=True,
+            value=0,
+            size=175,
+            units=&#34;kbps&#34;,
+            color=&#34;#fec036&#34;,
+        )
+    ],
+    n_clicks=0,
+)
+
+
+landing_page = html.Div(
+        id=&#39;landing-page&#39;,
+        children=[
+
+        
+            html.Div(
+                id=&#34;panel-side&#34;,
+                children=[
+                    #top panel
+                    html.Div(
+                        id=&#39;config_top&#39;,
+                        children=[
+                            html.P(
+                                id=&#34;satellite-dropdown-text&#34;, children=[&#34;VPN Gateway Dashboard&#34;]
+                            ),
+                            html.Div(
+                                id=&#39;nav_buttons&#39;,
+                                children=[
+                                    html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;Network config&#39;, href=&#39;/network_config&#39;),
+                                        n_clicks=0),
+                                    html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;LAN config&#39;, href=&#39;/lan_config&#39;),
+                                        n_clicks=0)
+                                ]
+                            ),
+                            
+                        ]
+                    ),
+                ]
+            ),
+            #body
+            html.Div(
+                id=&#39;dashboard_body&#39;,
+                children=[
+                    html.Div(
+                        id=&#39;div1&#39;,
+                        children=[
+                            html.Div(
+                                id=&#39;guage-panel&#39;,
+                                children=[
+                                    html.Div(
+                                        id=&#39;guage-element&#39;,
+                                        children=[
+                                            tx,
+                                        ]
+                                    ),
+                                    html.Div(
+                                        id=&#39;guage-element&#39;,
+                                        children=[
+                                            rx,
+                                        ]
+                                    )
+                                ]
+                            ),
+                            html.Div(
+                                id=&#39;guage-panel&#39;,
+                                children=[
+                                    html.Div(
+                                        id=&#39;graph-panel&#39;
+                                    )
+
+                                ]
+                            )
+                        ]
+                    ),
+                    html.Div(
+                        id=&#39;div2&#39;,
+                        children=[
+                            #connected devices, vpn server, forwarded ports,
+                            
+                            html.Div(
+                                id=&#39;div-b&#39;,
+                                children=[
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(&#34;Connected Devices&#34;)),
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(len(gc.get_connected_devices()))),
+                                ]
+                            ),
+                            html.Div(
+                                id=&#39;div-b&#39;,
+                                children=[
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(&#34;Open Ports&#34;)),
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(len(gc.get_open_ports()))),
+                                ]
+                            ),
+                            html.Div(
+                                id=&#39;div-b&#39;,
+                                children=[
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(&#34;VPN Server Ip&#34;)),
+                                    html.H1(id=&#34;satellite-nameE&#34;, children=(gc.get_connected_server_ip())),
+                                ]
+                            ),
+                            
+                        ]
+                    ),
+                ]
+            ) 
+    ])
+
+
+connect_toggle = daq.ToggleSwitch(
+    id=&#34;connect_toggle&#34;,
+    value=False,
+    label=[&#34;Disconnect&#34;, &#34;Connect&#34;],
+    color=&#34;#ffe102&#34;,
+    style={&#34;color&#34;: &#34;#black&#34;},
+)
+
+pfconnect_toggle = daq.ToggleSwitch(
+    id=&#34;pfconnect_toggle&#34;,
+    value=False,
+    label=[&#34;Disable&#34;, &#34;Enable&#34;],
+    color=&#34;#ffe102&#34;,
+    style={&#34;color&#34;: &#34;#black&#34;},
+)
+
+options_dropdown = dcc.Dropdown(
+    id=&#34;satellite-dropdown-component&#34;,
+    options=[
+        {&#34;label&#34;: &#34;Map Graph&#34;, &#34;value&#34;: &#34;map_graph&#34;},
+        {&#34;label&#34;: &#34;VPN Monitoring&#34;, &#34;value&#34;: &#34;server_stats&#34;},
+        {&#34;label&#34;: &#34;VPN Gateways&#34;, &#34;value&#34;: &#34;net_info&#34;},
+    ],
+    clearable=False,
+    value=&#34;map_graph&#34;,
+)
+
+network_statistics_page = html.Div(
+        id=&#34;network_statistics_page&#34;,
+        children=[
+            html.Div(
+                id=&#34;panel-side&#34;,
+                children=[
+                    #top panel
+                    html.Div(
+                        id=&#39;config_top&#39;,
+                        children=[
+                            html.P(
+                                id=&#34;satellite-dropdown-text&#34;, children=[&#34;VPN Connection&#34;]
+                            ),
+                            html.Div(
+                                id=&#39;nav_buttons&#39;,
+                                children=[
+                                    html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;Go to home page&#39;, href=&#39;/&#39;),
+                                        n_clicks=0),
+                                    html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;Lan config&#39;, href=&#39;/lan_config&#39;),
+                                        n_clicks=0)
+                                ]
+                            ),
+                            
+                        ]
+                    ),   
+                ]),
+                
+            #body
+            html.Div(
+                id=&#39;ipsec_config_body&#39;,
+                children=[
+                    html.Div(
+                        id=&#39;div-3&#39;,
+                        children=[
+                            html.Div(
+                                id=&#39;drop-map-box&#39;,
+                                children=[
+                                    html.Div(
+                                        id=&#39;drop-map&#39;,
+                                        children=[
+                                        ]
+                                    ),
+                                     html.Div(
+                                        id=&#39;drop-map-toggle&#39;,
+                                        children=[
+                                            connect_toggle
+                                        ]
+                                    ),
+                                    
+                                ]
+                            ),
+                            html.Div(
+                                id=&#39;drop-map-details&#39;,
+        
+                            ),
+                        ]
+                    ),
+                    html.Div(
+                        id=&#39;div-3&#39;,
+                        children=[
+                            html.Div(
+                                id=&#39;status-div&#39;,
+                                children=[
+                                    html.P(
+                                        id=&#34;satellite-dropdown-text&#34;, children=[&#34;Status: &#34;]
+                                    ),
+                                    html.P(
+                                        id=&#34;connection-value&#34;,
+                                    ),
+                                    #html.Div(
+                                    #    id=&#39;status-div&#39;,
+                                    #    children=[]
+                                    #),
+                                ]
+                            ),
+                            html.Div(
+                                id=&#39;status-details-div&#39;,
+                                children=[
+                                    
+                                    html.P(
+                                        id=&#34;connection-value&#34;,
+                                    ),
+                                    html.P(
+                                        id=&#34;satellite-dropdown-text-virtual-ip&#34;, 
+                                    ),
+                                    #html.Div(
+                                    #    id=&#39;status-div&#39;,
+                                    #    children=[]
+                                    #),
+                                ]
+                            ),
+                        ]
+                    )
+
+                ]
+            )
+
+        ]
+    )
+
+
+LAN_configuration_page = html.Div(
+    id = &#39;LAN_configuration_page&#39;,
+    children=[
+
+    
+        html.Div(
+            id=&#34;panel-side&#34;,
+            children=[
+                #top panel
+                html.Div(
+                    id=&#39;config_top&#39;,
+                    children=[
+                        html.P(
+                            id=&#34;satellite-dropdown-text&#34;, children=[&#34;LAN Configuration&#34;]
+                        ),
+                        html.Div(
+                            id=&#39;nav_buttons&#39;,
+                            children=[
+                                html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;Go to home page&#39;, href=&#39;/&#39;),
+                                        n_clicks=0),
+                                html.Button(
+                                        id=&#34;bb1&#34;,
+                                        children=dcc.Link(&#39;Network config&#39;, href=&#39;/network_config&#39;),
+                                        n_clicks=0)                
+                            ]
+                        ),
+                        
+                    ]
+                ),
+
+                
+            ]),
+        #enable_port_forwarding, change_dhcp_config, connect_ssid
+        #body
+        html.Div(
+            id=&#39;lan_config_body&#39;,
+            children=[
+                html.Div(
+                    id=&#39;wifi_connect_body&#39;,
+                    children=[
+                        html.Div(
+                            id=&#39;wifi-top&#39;,
+                            children=[
+                                html.P(
+                                    id=&#34;satellite-dropdown-text&#34;, children=[&#34;WiFi&#34;]
+                                ),
+                            ]
+                        ),
+                        
+                        html.Div(
+                            id=&#39;wifi-middle&#39;,
+                            children=[
+                                #inputs
+                                html.Div(
+                                    id=&#39;ssid_div&#39;,
+                                    children=[
+                                        html.P(
+                                            id=&#34;satellite-dropdown-textT&#34;, children=[&#34;WiFi ssid&#34;]
+                                        ),
+                                    ]
+                                ),
+                                html.Div(id=&#39;ssid_div&#39;,
+                                    children=[dcc.Input(id=&#34;ssid&#34;)],className=&#34;four columns&#34;),
+                                html.Div(
+                                    id=&#39;ssid_div&#39;,
+                                    children=[
+                                        html.P(
+                                            id=&#34;satellite-dropdown-textT&#34;, children=[&#34;passphrase&#34;]
+                                        ),
+                                    ]
+                                ),
+                                html.Div(id=&#39;ssid_div&#39;,
+                                    children=[dcc.Input(id=&#34;ssid_password&#34;)],className=&#34;four columns&#34;),
+                                html.Div(id=&#39;dummy-wifi-bottom&#39;),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;wifi-bottom&#39;,
+                            children=[
+                                #button
+                                html.Button(
+                                        id=&#34;wifi_button&#34;,
+                                        children=&#34;Connect&#34;,
+                                        #value=host,
+                                        n_clicks=0)
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;wifi-bottom-end&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#39;bb-end1&#39;,
+                                    
+                                ),
+                                html.Div(
+                                    id=&#39;bb-end2&#39;,
+                                    
+                                ),
+                                
+                            ]
+                        ),
+                    ]
+                ),
+
+                html.Div(
+                    id=&#39;configure_dhcp_body&#39;,
+                    children=[
+                        html.Div(
+                            id=&#39;dhcp-top&#39;,
+                            children=[
+                                html.P(
+                                    id=&#34;satellite-dropdown-text&#34;, children=[&#34;LAN DHCP&#34;]
+                                ),
+                            ]
+                        ),
+                        
+                        html.Div(
+                            id=&#39;dhcp-middle&#39;,
+                            children=[
+                                #inputs
+                                html.Div(
+                                    id=&#39;dhcp_input_div1&#39;,
+                                    children=[
+                                        html.P(
+                                            id=&#34;satellite-dropdown-textT&#34;, children=[&#34;Start IP&#34;]
+                                        ),
+                                    ]
+                                ),
+                                html.Div(id=&#39;dhcp_input_div1&#39;,
+                                    children=[dcc.Input(id=&#34;start-ip&#34;)],className=&#34;four columns&#34;),
+                                html.Div(
+                                    id=&#39;dhcp_input_div1&#39;,
+                                    children=[
+                                        html.P(
+                                            id=&#34;satellite-dropdown-textT&#34;, children=[&#34;End IP&#34;]
+                                        ),
+                                    ]
+                                ),
+                                html.Div(id=&#39;dhcp_input_div1&#39;,
+                                    children=[dcc.Input(id=&#34;end-ip&#34;)],className=&#34;four columns&#34;),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;dhcp-bottom&#39;,
+                            children=[
+                                #button
+                                html.Button(
+                                        id=&#34;dhcp_configure_button&#34;,
+                                        children=&#34;Configure&#34;,
+                                        #value=host,
+                                        n_clicks=0)
+                            ]
+                        ),
+                        html.Div(id=&#39;dummy-dhcp-bottom&#39;),
+                        html.Div(
+                            id=&#39;dhcp-bottom-end&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#39;b-end1&#39;,
+                                    children=[
+                                        #html.P(
+                                        #    id=&#34;satellite-dropdown-text&#34;, children=[&#34;Address Pool&#34;]
+                                        #),
+                                    ]
+                                ),
+                                html.Div(
+                                    id=&#39;b-end2&#39;,
+                                    
+                                ),
+                                
+                            ]
+                        ),
+                    ]
+                ),
+
+                html.Div(
+                    id=&#39;port_forward_body&#39;,
+                    children=[
+                        html.Div(
+                            id=&#39;portf-top&#39;,
+                            children=[
+                                html.P(
+                                    id=&#34;satellite-dropdown-text&#34;, children=[&#34;Port Forwarding&#34;]
+                                ),
+                            ]
+                        ),
+                        html.Div(
+                            id=&#39;portf-body&#39;,
+                            children=[
+                                html.Div(
+                                    id=&#39;port-configure-pan&#39;,
+                                    children=[
+                                        html.Div(
+                                            id=&#39;fport-toggle-pan&#39;,
+                                            children=[
+                                                pfconnect_toggle
+                                            ]
+                                        ),
+                                        html.Div(
+                                            id=&#39;fport-toggle-details-pan&#39;,
+                                            
+                                        ),
+                                    ]
+                                ),
+                                html.Div(
+                                    id=&#39;fport-details-pan&#39;,
+                                    
+                                ),
+                                html.Div(
+                                    id=&#39;dummy-fport-details-pan&#39;,
+                                    
+                                ),
+                                
+                            ]
+                        ),
+
+                    ]
+                ),
+            ]
+        ),
+        #side_panel_title,
+        #html.Pre(
+        #        children=&#39;network configuration page&#39;,
+        #    ),
+            
+        
+    ]
+)
+
+#fport-details-pan
+
+@app.callback(
+        Output(&#34;fport-toggle-details-pan&#34;,&#34;children&#34;),
+        [
+            Input(&#39;pfconnect_toggle&#39;, &#39;value&#39;),
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+        ])
+def display_page(value, pathname):
+    if pathname == &#39;/lan_config&#39;:
+        if value:
+            return html.Div(
+                children=[
+                    #inputs
+                    html.Div(
+                        id=&#39;pf_input_div1&#39;,
+                        children=[
+                            html.P(
+                                id=&#34;satellite-dropdown-textT&#34;, children=[&#34;Client IP&#34;]
+                            ),
+                        ]
+                    ),
+                    html.Div(id=&#39;pf_input_div1&#39;,
+                        children=[dcc.Input(id=&#34;pf-host-ip&#34;)],className=&#34;four columns&#34;),
+                    html.Div(
+                        id=&#39;pf_input_div1&#39;,
+                        children=[
+                            html.P(
+                                id=&#34;satellite-dropdown-textT&#34;, children=[&#34;Port&#34;]
+                            ),
+                        ]
+                    ),
+                    html.Div(id=&#39;pf_input_div1&#39;,
+                        children=[dcc.Input(id=&#34;pf-host-port&#34;)],className=&#34;four columns&#34;),
+                    #button
+                    html.Button(
+                        id=&#34;pf_button&#34;,
+                        children=&#34;Add&#34;,
+                        #value=host,
+                        n_clicks=0)
+                ]
+            )
+
+@app.callback(
+        Output(&#34;dummy-fport-details-pan&#34;,&#34;children&#34;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;pf_button&#39;, &#39;n_clicks&#39;),
+            
+        ],
+        [
+            State(&#34;pf-host-ip&#34;, &#34;value&#34;),
+            State(&#34;pf-host-port&#34;, &#34;value&#34;)
+        ])
+def display_page(pathname,n, d1, d2):
+    if pathname == &#39;/lan_config&#39;:
+        if d1 != None and d2 != None:
+            y = gc.enable_port_forwarding(d2, d1)
+            if y:
+                gc.store_port(d1, d2)
+                print(&#39;Successfully added port&#39;)
+            else:
+                print(&#39;UNsuccessfull port add&#39;)
+            
+
+    return &#39;&#39;
+
+
+@app.callback(
+        Output(&#34;dummy-dhcp-bottom&#34;,&#34;children&#34;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;dhcp_configure_button&#39;, &#39;n_clicks&#39;),
+            
+        ],
+        [
+            State(&#34;start-ip&#34;, &#34;value&#34;),
+            State(&#34;end-ip&#34;, &#34;value&#34;)
+        ])
+def display_page(pathname,n, d1, d2):
+    if pathname == &#39;/lan_config&#39;:
+        
+        if d1 != None and d2 != None:
+            gc.change_dhcp_config(d1, d2)
+            print(&#39;succefully added dhcp ips&#39;)
+
+    return &#39;&#39;
+
+
+@app.callback(
+  
+            Output(&#34;bb-end1&#34;,&#34;children&#34;),
+            #Output(&#34;dummy-wifi-bottom&#34;,&#34;children&#34;),
+       
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;wifi_button&#39;, &#39;n_clicks&#39;),
+            
+        ],
+        [
+            State(&#34;ssid&#34;, &#34;value&#34;),
+            State(&#34;ssid_password&#34;, &#34;value&#34;)
+        ])
+def display_page(pathname,n, d1, d2):
+    if pathname == &#39;/lan_config&#39;:
+        
+        if d1 != None and d2 != None:
+            y = gc.connect_wifi(d1, d2)
+            
+            if y != &#39;&#39;:
+                return &#39;Connected to &#39;+y
+
+
+@app.callback(
+        Output(&#34;fport-details-pan&#34;,&#34;children&#34;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)
+        ])
+def display_page(pathname,n):
+    if pathname == &#39;/lan_config&#39;:
+        data = gc.get_open_ports()
+        display_div = [
+            html.Div(
+                id=&#34;open-ports-label&#34;,
+                children=[
+                    html.Div(&#39;Open Ports&#39;, className=&#34;four columns&#34;),
+                ],
+            ),
+            html.Div(
+                id=&#34;value-setter-panel-header11&#34;,
+                children=[
+                    html.Div(&#39;Client Ip&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Port&#39;, className=&#34;four columns&#34;),
+                    
+                ],
+                className=&#34;row&#34;,
+            )
+        ]
+
+        if len(data) &gt; 0:
+            
+            for i in data:
+                
+
+                display_div.append(
+                    html.Div(
+                        id=&#34;value-setter-panel-u11&#34;,
+                        children=[
+                            html.Div(i[0],className=&#34;four columns&#34;),
+                            html.Div(i[1], className=&#34;four columns&#34;),
+                            ],
+                        className=&#34;row&#34;,
+                    )
+                )
+
+        return display_div
+
+
+@app.callback([
+        Output(&#34;connection-value&#34;,&#34;children&#34;),
+        Output(&#34;satellite-dropdown-text-virtual-ip&#34;, &#34;children&#34;),
+        ],
+        [
+            Input(&#39;connect_toggle&#39;, &#39;value&#39;),
+            Input(&#34;satellite-dropdown-component&#34;, &#34;value&#34;)
+        ])
+def display_page(value, drop_value):
+    if value:
+        data = gc.get_available_servers()
+        if len(data) &gt; 0:
+            
+            for i in data:
+                if i[0] == drop_value:
+                    
+                    #use initialise method
+                    res, ip = gc.initialise_vpn(i[1], i[2], i[7], i[3])
+                    
+                    if res:
+                        return [&#39;Connected&#39; , (&#34;Virtual IP: &#34;+ip)]
+                    else:
+                        return [&#39;Disconnected&#39; , &#34;&#34;]
+
+    else:
+        if drop_value != None:
+            #res = gc.disconnect_vpn(&#39;gateway_vpn&#39;)
+            #if res:
+                return [&#39;Disconnected&#39; , &#34;&#34;]
+
+@app.callback(
+        Output(&#34;drop-map-details&#34;,&#34;children&#34;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;interval-component&#39;, &#39;n_intervals&#39;)
+        ])
+def display_page(pathname, n):
+    if pathname == &#39;/network_config&#39;:
+        data = gc.get_available_servers()
+        display_div = [
+            html.Div(
+                id=&#34;value-setter-panel-header1&#34;,
+                children=[
+                    html.Div(&#39;Server&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Location&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Number Of users&#39;, className=&#34;four columns&#34;),
+                    html.Div(&#39;Latency&#39;, className=&#34;four columns&#34;),
+                ],
+                className=&#34;row&#34;,
+            )
+        ]
+
+        if len(data) &gt; 0:
+            
+            for i in data:
+                
+
+                display_div.append(
+                    html.Div(
+                        id=&#34;value-setter-panel-u1&#34;,
+                        children=[
+                            html.Div(i[0],className=&#34;four columns&#34;),
+                            html.Div(i[4], className=&#34;four columns&#34;),
+                            html.Div(i[5], className=&#34;four columns&#34;),
+                            html.Div(i[6], className=&#34;four columns&#34;),
+                            ],
+                        className=&#34;row&#34;,
+                    )
+                )
+
+        return display_div
+
+@app.callback(
+        Output(&#34;drop-map&#34;,&#34;children&#34;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+        ])
+def display_page(pathname):
+    if pathname == &#39;/network_config&#39;:
+        data = gc.get_available_servers()
+
+        
+        if len(data) &gt; 0:
+            _options = []
+            for i in data:
+                _options.append({&#34;label&#34;: i[0], &#34;value&#34;: i[0]})
+
+                
+
+            return dcc.Dropdown(
+                    id=&#34;satellite-dropdown-component&#34;,
+                    options=_options,
+                    clearable=False,
+                    value=&#34;map_graph&#34;,
+                )
+        else:
+            return &#39;No Access Servers Available&#39;
+
+@app.callback([
+            Output(&#34;control-panel-speed-component&#34;, &#34;value&#34;),
+            Output(&#34;control-panel-speed-component2&#34;, &#34;value&#34;),
+            Output(&#34;graph-panel&#34;,&#34;children&#34;),
+        ],
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        ])
+def display_page(pathname,n):
+    res = gc.get_cpu_ram_usage(2)
+    
+    data = dict()
+
+    data[&#39;time_added&#39;] = int(time.time())
+    data[&#39;cpu&#39;] = res[&#39;cpu_percent&#39;]
+    data[&#39;ram&#39;] = res[&#39;ram_percent&#39;]
+    
+    root_path = &#39;/root/test_folder/vpn_gateway/&#39;        #for final deployment
+    root_path= &#39;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/vpn_gateway/&#39;       #for development testing
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;ifconfig_wlan.sh&#34;])
+    r4 = subprocess.run([root_path+&#34;ifconfig_wlan.sh&#34;], shell=True)
+    file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+    rx = 0
+    tx = 0
+    for i in file:
+        if &#39;inet &#39; in i:
+            virtual_ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+        if &#39;RX packets&#39; in i:
+            rx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+        if &#39;TX packets&#39; in i:
+            tx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+
+
+    data[&#39;traffic_in&#39;] = rx
+    data[&#39;traffic_out&#39;] =tx
+    data[&#39;connected_hosts&#39;] = len(open(&#39;/var/lib/misc/dnsmasq.leases&#39;, &#39;r&#39;).readlines())
+    data[&#39;vpn_data_usage&#39;] = 542
+    data[&#39;connected_server&#39;] = 2
+
+    gc.write_stats(data)
+    time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server = gc.retrive_stats_data()
+
+    time_added = gc.convert_to_datetime(time_added)
+    
+    if len(time_added) &gt; 50:
+        time_added = time_added[(len(time_added)-50):len(time_added)]
+        traffic_in = traffic_in[(len(traffic_in)-50):len(traffic_in)]
+        traffic_out = traffic_out[(len(traffic_out)-50):len(traffic_out)]
+    
+    
+    fig = dcc.Graph(
+        id=&#34;histogram-graphq&#34;,                        
+        figure={
+            &#34;data&#34;: [
+                {
+                    &#34;x&#34;: time_added,
+                    &#34;y&#34;: traffic_in,
+                    &#34;type&#34;: &#34;scatter&#34;,
+                    &#34;name&#34;:&#34;Data In&#34;,
+                    &#34;marker&#34;: {&#34;color&#34;: &#34;#89f72f&#34;},
+                },
+                {
+                    &#34;x&#34;: time_added,
+                    &#34;y&#34;: traffic_out,
+                    &#34;type&#34;: &#34;scatter&#34;,
+                    &#34;name&#34;:&#34;Data Out&#34;,
+                    &#34;marker&#34;: {&#34;color&#34;: &#34;#117cf7&#34;},
+                }
+            ],
+            &#34;layout&#34;: {
+                &#34;margin&#34;: {&#34;t&#34;: 30, &#34;r&#34;: 35, &#34;b&#34;: 40, &#34;l&#34;: 50},
+                &#34;xaxis&#34;: {&#34;dtick&#34;: 5, &#34;gridcolor&#34;: &#34;#636363&#34;, &#34;showline&#34;: False},
+                &#34;yaxis&#34;: {&#34;showgrid&#34;: False},
+                &#34;plot_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                &#34;paper_bgcolor&#34;: &#34;#2b2b2b&#34;,
+                &#34;font&#34;: {&#34;color&#34;: &#34;gray&#34;},
+            },
+        },
+      config={&#34;displayModeBar&#34;: False},
+    )
+
+    return [random.randint(0, 500), random.randint(0, 500), fig]
+&#39;&#39;&#39;
+@app.callback(Output(&#39;dashboard_body&#39;, &#39;children&#39;),
+        [
+            Input(&#39;url&#39;, &#39;pathname&#39;),
+            Input(&#39;interval-component&#39;, &#39;n_intervals&#39;),
+        ])
+def display_page(pathname, n):
+    time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server = gc.retrive_stats_data()
+&#39;&#39;&#39;
+
+
+@app.callback(Output(&#39;page-content&#39;, &#39;children&#39;),
+                [Input(&#39;url&#39;, &#39;pathname&#39;)])
+def display_page(pathname):
+    if pathname == &#39;/&#39;:
+        return landing_page
+    elif pathname ==&#39;/network_config&#39;:
+        return network_statistics_page
+    elif pathname == &#39;/lan_config&#39;:
+        return LAN_configuration_page
+
+if __name__ == &#39;__main__&#39;:
+    app.run_server(debug=True, host=&#39;192.168.43.205&#39;)
+
+
+
+
+
+side_panel_title = html.P(
+    id=&#34;satellite-dropdown-text&#34;, children=[&#34;VPN Gateway&#34;, html.Br(), &#34; Dashboard&#34;]
+)
+
+#network
+
+ip_address_field = html.H1(id=&#34;satellite-name&#34;, children=(&#34;IP : &#34;+socket.gethostbyname(socket.gethostname())))
+
+server_details = html.Div(
+    className=&#34;satellite-description&#34;, id=&#34;satellite-description&#34;
+)
+
+side_panel_layout = html.Div(
+    id=&#34;panel-side&#34;,
+    children=[
+        side_panel_title,
+        #html.Div(id=&#34;satellite-dropdown&#34;, children=options_dropdown),
+         html.Pre(
+            children=&#39;Home Page&#39;,
+        ),
+        
+        html.Div(id=&#34;panel-side-text&#34;, children=[ip_address_field, server_details]),
+    ],
+)
+
+server_statistics = html.Div(
+    #id=&#34;histogram-container&#34;,
+    children=[
+        html.Div(
+            id=&#34;histogram-container-graphs&#34;,
+            children=&#34;&#34;
+            ),
+        html.Div(
+            id=&#34;histogram-container-graphs2&#34;,
+            children=&#34;&#34;
+            )
+        ],
+)
+&#39;&#39;&#39;
+vpn_gateways = html.Div(
+    #id=&#34;histogram-container&#34;,
+    children=[
+        html.Div(
+            id=&#34;gateway-container&#34;,
+            children=&#34;&#34;
+            ),
+        html.Div(
+            id=&#34;gateway-container2&#34;,
+            children=&#34;&#34;
+            )
+        ],
+)
+&#39;&#39;&#39;
+main_panel_layout = html.Div(
+        id=&#34;panel-upper-lower2&#34;,
+        children=[
+            #map_toggle,
+            html.Div(
+                id=&#34;panel-upper-lower&#34;,
+                children=[
+
+                ]
+                )
+            ])
+
+root_layout = html.Div(
+    id=&#34;root&#34;,
+    children=[
+        side_panel_layout,
+        main_panel_layout,
+    ],
+)
+#</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="dashboard.gateway_dashboard.server_statistics"><code class="name">var <span class="ident">server_statistics</span></code></dt>
+<dd>
+<div class="desc"><p>vpn_gateways = html.Div(
+#id="histogram-container",
+children=[
+html.Div(
+id="gateway-container",
+children=""
+),
+html.Div(
+id="gateway-container2",
+children=""
+)
+],
+)</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="dashboard.gateway_dashboard.display_page"><code class="name flex">
+<span>def <span class="ident">display_page</span></span>(<span>pathname)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.callback(Output(&#39;page-content&#39;, &#39;children&#39;),
+                [Input(&#39;url&#39;, &#39;pathname&#39;)])
+def display_page(pathname):
+    if pathname == &#39;/&#39;:
+        return landing_page
+    elif pathname ==&#39;/network_config&#39;:
+        return network_statistics_page
+    elif pathname == &#39;/lan_config&#39;:
+        return LAN_configuration_page</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="dashboard" href="index.html">dashboard</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="dashboard.gateway_dashboard.server_statistics" href="#dashboard.gateway_dashboard.server_statistics">server_statistics</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="dashboard.gateway_dashboard.display_page" href="#dashboard.gateway_dashboard.display_page">display_page</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+● ipsec.service - Internet Key Exchange (IKE) Protocol Daemon for IPsec
+     Loaded: loaded (/lib/systemd/system/ipsec.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2022-03-23 23:02:23 GMT; 1 weeks 5 days ago
+       Docs: man:ipsec(8)
+             man:pluto(8)
+             man:ipsec.conf(5)
+    Process: 942 ExecStartPre=/usr/local/libexec/ipsec/addconn --config /etc/ipsec.conf --checkconfig (code=exited, status=0/SUCCESS)
+    Process: 946 ExecStartPre=/usr/local/libexec/ipsec/_stackmanager start (code=exited, status=0/SUCCESS)
+    Process: 1181 ExecStartPre=/usr/local/sbin/ipsec --checknss (code=exited, status=0/SUCCESS)
+    Process: 1182 ExecStartPre=/usr/local/sbin/ipsec --checknflog (code=exited, status=0/SUCCESS)
+   Main PID: 1193 (pluto)
+     Status: "Startup completed."
+      Tasks: 2 (limit: 1108)
+     Memory: 3.7M
+     CGroup: /system.slice/ipsec.service
+             └─1193 /usr/local/libexec/ipsec/pluto --leak-detective --config /etc/ipsec.conf --nofork
+
+Apr 05 09:37:51 LightPlayful-VM pluto[1193]: netlink_acquire got message with length 60 < 232 bytes; ignore message
+Apr 05 09:55:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: ERROR: asynchronous network error report on eth0 (107.172.197.127:4500), complainant 102.70.65.75: Connection refused [errno 111, origin ICMP type 3 code 3 (not authenticated)]
+Apr 05 09:55:57 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: ERROR: asynchronous network error report on eth0 (107.172.197.127:4500), complainant 102.70.65.75: Connection refused [errno 111, origin ICMP type 3 code 3 (not authenticated)]
+Apr 05 09:56:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: ERROR: asynchronous network error report on eth0 (107.172.197.127:4500), complainant 102.70.65.75: Connection refused [errno 111, origin ICMP type 3 code 3 (not authenticated)]
+Apr 05 09:56:57 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: ERROR: asynchronous network error report on eth0 (107.172.197.127:4500), complainant 102.70.65.75: Connection refused [errno 111, origin ICMP type 3 code 3 (not authenticated)]
+Apr 05 09:57:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #66: DPD action - clearing connection kind CK_INSTANCE
+Apr 05 09:57:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: deleting state (STATE_QUICK_R2) aged 1179.766172s and sending notification
+Apr 05 09:57:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #67: ESP traffic information: in=1MB out=7MB
+Apr 05 09:57:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75 #66: deleting state (STATE_MAIN_R3) aged 1181.597675s and sending notification
+Apr 05 09:57:27 LightPlayful-VM pluto[1193]: "l2tp-psk"[28] 102.70.65.75: deleting connection instance with peer 102.70.65.75 {isakmp=#0/ipsec=#0}

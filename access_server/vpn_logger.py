@@ -11,12 +11,19 @@ import threading
 import platform
 import requests
 import sqlite3
+import db_query
 
+root_path = '/root/test_folder/access_server/'      #for final deployment
+#root_path = 'C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/access_server' #for development testing
+db = sqlite3.connect(root_path+'vpn_servers.db')
+#res1 = subprocess.run([root_path+"logtraffic.sh"], shell=True)
 # program that executes a bash script that logs
 # the current state of VPN connections every one minute
 def log_connections(_seconds):
     while True:
-        subprocess.run(["./logtraffic.sh"], shell=True)
+        print('Running step1')
+        res1 = subprocess.run([root_path+"logtraffic.sh"], shell=True)
+        print('Return code :',res1.returncode)
         time.sleep(_seconds)
 
 def send_to_query_server(data:dict, server_addr, port):
@@ -35,26 +42,32 @@ def send_to_query_server(data:dict, server_addr, port):
         print('There an error resolving the host')
 
 def process_text():                 #extras status infomation from text files
-    clients = []
-    res = dict()
-    try:
+        clients = []
+        res = dict()
+    
+        ipsec_status = open('/root/logfiles/ipsecservicestatus.txt', 'r').readlines()
+        res['ipsec_status'] = 'Active' #ipsec_status[0].split(':')[0].split('     ')[1]
         trafficstatus_file = open('trafficstatus.txt', 'r').readlines()
-        for i in trafficstatus_file:
-            client = []
-            temp = i.split(' ')[2].split('[')[0]                           #connection protocol
-            client.append(temp[1:len(temp)-1])
-            client.append(i.split(']')[1].split(',')[0])                   #ip address
-            client.append(i.split('type=')[1].split(',')[0])               #connection type
-            client.append(i.split('add_time=')[1].split(',')[0])           #add time
-            client.append(i.split('inBytes=')[1].split(',')[0])            #bytes sent to the server
-            client.append(i.split('outBytes=')[1].split(',')[0])           #bytes sent from server
-            temp = i.split('id=')[1].split(',')[0]                         #client ip address
-            client.append(temp[1:len(temp)-2])
+        if len(trafficstatus_file) > 0:
+            for i in trafficstatus_file:
+                client = []
+                temp = i.split(' ')[2].split('[')[0]                           #connection protocol
+                client.append(temp[1:len(temp)-1])
+                client.append(i.split(']')[1].split(',')[0])                   #ip address
+                client.append(i.split('type=')[1].split(',')[0])               #connection type
+                client.append(i.split('add_time=')[1].split(',')[0])           #add time
+                client.append(i.split('inBytes=')[1].split(',')[0])            #bytes sent to the server
+                client.append(i.split('outBytes=')[1].split(',')[0])           #bytes sent from server
+                temp = i.split('id=')[1].split(',')[0]                         #client ip address
+                client.append(temp[1:len(temp)-2])
 
-            clients.append(client)
-        res['clients'] = clients
+                clients.append(client)
+            res['clients'] = clients
+        else:
+            res['clients'] = []
 
-        briefstatus_file = open('status.txt', 'r').readlines()
+
+        briefstatus_file = open('/root/logfiles/status.txt', 'r').readlines()
 
         #IPsec security associations
         briefstatus_file[2]
@@ -70,18 +83,24 @@ def process_text():                 #extras status infomation from text files
         res['ikev2_authenticated_users'] = int(briefstatus_file[1].split('authenticated')[1][1])
         res['ikev2_anonymous_users'] = int(briefstatus_file[1].split('anonymous')[1][1])
 
-        netstat = open('netstat.txt', 'r').readlines()
-        netstat_data = netstat.readlines()
-        for text in netstat_data:
-            if 'dropped' in text:
-                res['dropped_packets'] = int(text.split('dropped')[0])
-            else:
-                res['dropped_packets'] = 0
-            
-            if 'total packets received' in text:
-                res['total_packets_received'] = int(text.split('total')[0])
+        netstat_data = open('/root/logfiles/netstat.txt', 'r').readlines()[0:9]
+        if len(netstat_data) > 0:
+            for text in netstat_data:
+                if 'dropped' in text:
+                    res['dropped_packets'] = int(text.split('dropped')[0])
+                else:
+                    res['dropped_packets'] = 0
+                
+                if 'total packets received' in text:
+                    res['total_packets_received'] = int(text.split('total')[0])
+                else:
+                    res['total_packets_received'] = 0
+        else:
+            res['dropped_packets'] = 0
+            res['total_packets_received'] = 0
 
-        states_file = open('states.txt', 'r').readlines()
+
+        states_file = open('/root/logfiles/states.txt', 'r').readlines()
         ip_port, traffic_data = [], []
         for item in states_file:
             if 'IPsec SA established' in item:
@@ -99,8 +118,7 @@ def process_text():                 #extras status infomation from text files
         res['client_states'] = _clients
 
         return res
-    except:
-        return False
+    
 
 def get_bandwidth():        #returns the total bytes sent and recieved by the server
     # Get net in/out
@@ -133,6 +151,10 @@ def get_cpu_ram_usage(_time_interval):      #returns cpu and ram usage
     usage = {"cpu_percent":cpu_percent, "ram_percent":ram_percent}
     return usage
 
+def get_open_port(root_path):
+    return db_query.get_open_port(root_path)
+    
+
 def measure_latency():
     # this function attempts to measure minimum, average and maximum 
     # round trip time (rtt) by pinging any of the vpn client ips
@@ -149,7 +171,7 @@ def measure_latency():
     max_rtt = float(values[2])
 
     return {"min_rtt":min_rtt,"avg_rtt":avg_rtt,"max_rtt":max_rtt}
-    #return {"min_rtt":6.34,"avg_rtt":7.63,"max_rtt":12.345}
+    
 
 def send_statistics(time_interval, server_addr, port):
     #time_interval = 60
@@ -159,6 +181,7 @@ def send_statistics(time_interval, server_addr, port):
         bandwidth = get_bandwidth()
         net_stats = measure_latency()
         data = process_text()
+        
         #data.update({"hostname":platform.node()})
         data.update({"time_submitted":int(time.time())})
         data.update(usage)
@@ -166,6 +189,8 @@ def send_statistics(time_interval, server_addr, port):
         data.update(net_stats)
         data.update(requests.get('http://ipinfo.io/json').json())       #gets the location of the server
         data.update({"datatype":'linux'})
+        
+        data.update(get_open_port(root_path))
 
         chap_secrets_file = open('/etc/ppp/chap-secrets', 'r')
         data.update({"chap_secrets": chap_secrets_file.readlines()})
@@ -174,7 +199,7 @@ def send_statistics(time_interval, server_addr, port):
         psk_secret_file = open('/etc/ipsec.secrets', 'r') 
         data.update({"psk":psk_secret_file.readlines()[0].split('PSK')[1].split("\"")[1]})
         psk_secret_file.close()
-
+        print('data',data)
         #send to query server
         send_to_query_server(data, server_addr, port)
         time.sleep(time_interval)
@@ -195,8 +220,6 @@ def vpn_listener():
 
         recieved_data = json.loads(connection.recv(1024).decode('ascii'))
         print("Json received -->", recieved_data)
-
-        db = sqlite3.connect('/root/vpn_server/vpn_servers.db')
 
         #Managing VPN Users
         if recieved_data['action'] == 'add_user':
@@ -273,11 +296,11 @@ def vpn_listener():
                 file.close()
 
 
-                db.execute('INSERT INTO PORTS(port_number, client_ip) VALUES (?,?)', (recieved_data['port'], recieved_data['ip_address']))
+                db.execute('INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)', (recieved_data['port'], recieved_data['ip_address'], 'open'))
                 db.commit()
 
-                res = subprocess.run(["chmod", "+x", "/root/vpn_server/port_forwarding.sh"])
-                res2 = subprocess.run(["bash", "/root/vpn_server/port_forwarding.sh"])
+                res = subprocess.run(["chmod", "+x", root_path+"port_forwarding.sh"])
+                res2 = subprocess.run(["bash", root_path+"port_forwarding.sh"])
                 if res.returncode ==0 and res2.returncode ==0:
                     pass
             except:
@@ -285,16 +308,17 @@ def vpn_listener():
         
         elif recieved_data['action'] == 'disable_port_forward':
             try:
-                file = open("/root/vpn_server/port_forwarding.sh","w")
+                file = open(root_path+"port_forwarding.sh","w")
                 file.write("iiptables -D FORWARD 2 -i eth0 -o ppp+ -p tcp --dport "+recieved_data['port']+" -j ACCEPT\n")
                 file.write("iptables -t nat -D PREROUTING -p tcp --dport "+recieved_data['port']+" -j DNAT --to "+recieved_data['ip_address']+"\n")
                 file.close()
 
-                db.execute('DELETE FROM PORTS WHERE port_number=?',(recieved_data['port'],))
+                #db.execute('INSERT INTO PORTS(port_number, client_ip, status) VALUES (?,?)', (recieved_data['port'], recieved_data['ip_address'], 'closed'))
+                db.execute('DELETE FROM PORTS WHERE port_number =? AND client_ip =?', (recieved_data['port'], recieved_data['ip_address']))
                 db.commit()
 
-                res = subprocess.run(["chmod", "+x", "/root/vpn_server/port_forwarding.sh"])
-                res2 = subprocess.run(["bash", "/root/vpn_server/port_forwarding.sh"])
+                res = subprocess.run(["chmod", "+x", root_path+"port_forwarding.sh"])
+                res2 = subprocess.run(["bash", root_path+"port_forwarding.sh"])
                 if res.returncode ==0 and res2.returncode ==0:
                     pass
             except:

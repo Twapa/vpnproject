@@ -20,41 +20,140 @@ def vpn_listener():
         connection, addr = sock.accept()
         print('got connection from ', addr)
 
-        recieved_data = json.loads(connection.recv(1024).decode('ascii'))
-        print("Json received -->", recieved_data)
+        recieved_data = json.loads(connection.recv(7024).decode('ascii'))
+        
         
         #write in database vpn access server statistics
         #store in database
         db = sqlite3.connect('vpn_servers.db')
-        values = (
-            recieved_data['time_submitted'],
-            recieved_data['hostname'],
-            recieved_data['country'],
-            recieved_data['ipsec_total_users'],
-            recieved_data['ipsec_authenticated_users'],
-            recieved_data['ipsec_anonymous_users'],
-            recieved_data['ikev2_total_certs'],
-            recieved_data['ike_half_open_certs'],
-            recieved_data['ikev2_open_conn'],
-            recieved_data['ikev2_authenticated_users'],
-            recieved_data['ikev2_anonymous_users'],
-            recieved_data['traffic_in'],
-            recieved_data['traffic_out'],
-            recieved_data['cpu_percent'],
-            recieved_data['ram_percent'],
-            recieved_data['min_rtt'],
-            recieved_data['avg_rtt'],
-            recieved_data['max_rtt'])
-        
-        db.execute('INSERT INTO ACCESS_SERVER_STATISTICS(time_submitted,' +\
-            'hostname, country, ipsec_total_users, ipsec_authenticated_users,' +\
-            'ipsec_anonymous_users, ikev2_total_certs, ike_half_open_certs, ikev2_open_conn,' +\
-            'ikev2_authenticated_users, ikev2_anonymous_users, traffic_in, traffic_out,' +\
-            'cpu_percent, ram_percent, min_rtt, avg_rtt, max_rtt) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-            values)
-        db.commit()
 
-        connection.close()
+        if recieved_data['datatype'] == 'android':
+            print("Android Json received -->", recieved_data)
+            if len(recieved_data['clienteap']) > 0:
+                for _client in recieved_data['clienteap']:
+                    values=(
+                        recieved_data['hostname'],
+                        recieved_data['ip'],
+                        _client[0],
+                        _client[1],
+                        _client[2],
+                        _client[3],
+                        _client[4],
+                        _client[5],
+                        _client[6],
+                    )
+                    db.execute('INSERT INTO EAP_CLIENTS(hostname, ip_address, username, password, server_ip, encryption_type, bytes_in, bytes_out, client_ip)' +\
+                        'VALUES (?,?,?,?,?,?,?,?,?)', values)
+
+            values = (
+                recieved_data['time_submitted'],
+                recieved_data['hostname'],
+                recieved_data['country'],
+                len(recieved_data['clienteap']),
+                len(recieved_data['clienteap']),
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                recieved_data['traffic_in'],
+                recieved_data['traffic_out'],
+                recieved_data['cpu_percent'],
+                recieved_data['ram_percent'],
+                recieved_data['min_rtt'],
+                recieved_data['avg_rtt'],
+                recieved_data['max_rtt'],
+                recieved_data['ip'],
+                recieved_data['total_packets_received'],
+                recieved_data['dropped_packets'],
+                )
+            
+            db.execute('INSERT INTO ACCESS_SERVER_STATISTICS(time_submitted,' +\
+                'hostname, country, ipsec_total_users, ipsec_authenticated_users,' +\
+                'ipsec_anonymous_users, ikev2_total_certs, ike_half_open_certs, ikev2_open_conn,' +\
+                'ikev2_authenticated_users, ikev2_anonymous_users, traffic_in, traffic_out,' +\
+                'cpu_percent, ram_percent, min_rtt, avg_rtt, max_rtt, ip_address, total_packets_received,' +\
+                'dropped_packets) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', values)
+
+            db.commit()
+            connection.close()
+
+        elif recieved_data['datatype'] == 'linux':
+            print("Linux Json received -->", recieved_data)
+            values = (
+                recieved_data['time_submitted'],
+                recieved_data['hostname'],
+                recieved_data['country'],
+                recieved_data['ipsec_total_users'],
+                recieved_data['ipsec_authenticated_users'],
+                recieved_data['ipsec_anonymous_users'],
+                recieved_data['ikev2_total_certs'],
+                recieved_data['ike_half_open_certs'],
+                recieved_data['ikev2_open_conn'],
+                recieved_data['ikev2_authenticated_users'],
+                recieved_data['ikev2_anonymous_users'],
+                recieved_data['traffic_in'],
+                recieved_data['traffic_out'],
+                recieved_data['cpu_percent'],
+                recieved_data['ram_percent'],
+                recieved_data['min_rtt'],
+                recieved_data['avg_rtt'],
+                recieved_data['max_rtt'],
+                recieved_data['ip'],
+                recieved_data['total_packets_received'],
+                recieved_data['dropped_packets'],
+                recieved_data['ipsec_status']
+                )
+            
+            db.execute('INSERT INTO ACCESS_SERVER_STATISTICS(time_submitted,' +\
+                'hostname, country, ipsec_total_users, ipsec_authenticated_users,' +\
+                'ipsec_anonymous_users, ikev2_total_certs, ike_half_open_certs, ikev2_open_conn,' +\
+                'ikev2_authenticated_users, ikev2_anonymous_users, traffic_in, traffic_out,' +\
+                'cpu_percent, ram_percent, min_rtt, avg_rtt, max_rtt, ip_address, total_packets_received,' +\
+                'dropped_packets, ipsec_status) VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', values)
+            
+            recieved_data['ports'][0]
+            recieved_data['ports'][1]
+
+            if len(recieved_data['ports'][1]) > 0:
+                db.execute('DROP TABLE IF EXISTS PORTS')
+                db.execute('CREATE TABLE PORTS (hostname TEXT, ip_address TEXT, port INTEGER, client_ip	TEXT)')
+                #db.execute('create table iceberg_parts(symbol text, limits REAL)')
+                for i in range(0, len(recieved_data['ports'][0])):
+                    values = (
+                        recieved_data['hostname'],
+                        recieved_data['ip'],
+                        recieved_data['ports'][0][i],
+                        recieved_data['ports'][1][i],
+                        recieved_data['ports'][2][i]
+                    )
+                    
+                    db.execute('INSERT INTO PORTS(hostname, ip_address, port, client_ip, status) VALUES (?,?,?,?,?)', values)
+
+            for item in recieved_data['chap_secrets']:
+                values =(
+                    recieved_data['hostname'],
+                    item.split('\n')[0].split('\"')[4],
+                    item.split('\n')[0].split('\"')[1],
+                    item.split('\n')[0].split('\"')[3],
+                    recieved_data['psk']
+                )
+                db.execute('INSERT INTO CHAP_SECRETS(hostname, ip_address, username, password, psk) VALUES (?,?,?,?,?)', values)
+
+            if len(recieved_data['client_states']) > 0:
+               
+                for item in recieved_data['client_states']:
+                    values =(
+                        recieved_data['hostname'],
+                        item[0],
+                        item[1],
+                        item[2],
+                    )
+                    db.execute('INSERT INTO CLIENT_STATES(hostname, ip_port, traffic_in, traffic_out) VALUES (?,?,?,?)', values)
+
+            db.commit()
+            connection.close()
 
 def gateway_listener():     #this method is used to listen for connections comming from gateway routers
     sock = socket.socket()
@@ -72,7 +171,7 @@ def gateway_listener():     #this method is used to listen for connections commi
         recieved_data = json.loads(connection.recv(1024).decode('ascii'))
         print("Json received -->", recieved_data)
 
-        if recieved_data['connection_request'] == 'create':     #determine if the gateway server wants to create or join a vpn network
+        if recieved_data['connection_request'] == 'query_servers':     #determine if the gateway server wants to create or join a vpn network
             #search in database for available access servers
             _servers, access_servers = [], []
             temp, temp2, temp3 = [], [], []
@@ -96,14 +195,28 @@ def gateway_listener():     #this method is used to listen for connections commi
                     access_servers.append([
                     server[1],           #hostname
                     server[2],           #location
+                    server[3],           #total users
                     server[13],          #cpu percent
                     server[14],          #ram percent
                     server[15],          #min rtt
                     server[16],          #avg rtt
-                    server[17]           #max rtt
+                    server[17],          #max rtt
+                    server[18],          #ip address
+                    server[21]           #ipsec status
                     ])
             
-            connection.sendall(json.dumps(access_servers).encode('ascii'))
+            resf = []
+            for i in  access_servers:
+                res = []
+                cursor = db.execute('SELECT * FROM CHAP_SECRETS WHERE hostname=?',(i[0],))
+                for row in cursor:
+                    res.append(row[0]+'$$$'+row[2]+'$$$'+row[3]+'$$$'+row[4]+'$$$'+i[1]+'$$$'+str(i[2])+'$$$'+str(i[7])+'$$$'+i[8])
+
+                resf.append(list(set(res)))
+                    
+
+            connection.sendall(json.dumps(resf).encode('ascii'))
+            print('RETURNED : ',access_servers)
             #registered_network_data = json.loads(connection.recv(1024).decode('ascii'))
 
             connection.close()
@@ -122,7 +235,8 @@ def gateway_listener():     #this method is used to listen for connections commi
                 recieved_data["server_ip"],
                 recieved_data["username"],
                 recieved_data["password"],
-                recieved_data["psk"])
+                recieved_data["psk"],
+                recieved_data["router_ip"])
             
             db = sqlite3.connect('vpn_servers.db')
             db.execute('INSERT INTO REGISTERED_NETWORKS VALUES (?, ?, ?, ?, ?)', values)
@@ -130,7 +244,7 @@ def gateway_listener():     #this method is used to listen for connections commi
 
             connection.close()
 
-        elif recieved_data['connection_request'] == 'join':
+        elif recieved_data['connection_request'] == 'join_request':
             #search in database for access servers based on vpn id
             db = sqlite3.connect('vpn_servers.db')
             db.row_factory = sqlite3.Row
@@ -202,3 +316,4 @@ if __name__ == '__main__':
                 "type":"l2tp"
             }
 '''
+

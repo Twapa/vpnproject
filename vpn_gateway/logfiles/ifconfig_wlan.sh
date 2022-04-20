@@ -1,0 +1,1 @@
+ifconfig wlan0 > /root/test_folder/vpn_gateway/logfiles/wlan_details.txt

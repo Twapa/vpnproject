@@ -8,9 +8,7 @@ echo "c gateway_vpn" > /var/run/xl2tpd/l2tp-control
 
 #ip route
 
-#route add 107.172.197.127 gw 192.168.43.1
 
-#route add default dev ppp0
 #echo 1 > /proc/sys/net/ipv4/ip_forward
 
 iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE

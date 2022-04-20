@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>dashboard.gateway_config API documentation</title>
+<meta name="description" content="this script contains helper functions that will be used by
+the GUI framework to make configuration changes on the router.
+All functions will return …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>dashboard.gateway_config</code></h1>
+</header>
+<section id="section-intro">
+<p>this script contains helper functions that will be used by
+the GUI framework to make configuration changes on the router.
+All functions will return True if they run successfully and return False otherwise</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+this script contains helper functions that will be used by
+the GUI framework to make configuration changes on the router.
+All functions will return True if they run successfully and return False otherwise
+&#39;&#39;&#39;
+import subprocess
+import json
+import socket
+import sqlite3
+import json
+import psutil
+import time
+from datetime import datetime
+import socket
+
+root_path = &#39;/root/test_folder/vpn_gateway/&#39;
+root_path= &#39;C:/Users/STUART/Documents/project/gateway scripts/github/vpnproject/vpn_gateway/&#39;
+
+server_addr, port = &#39;88.80.187.189&#39;, 1500               #socket of the query server
+
+def get_available_servers():
+    data = {&#39;connection_request&#39;:&#39;query_servers&#39;}
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+        return []
+
+    try:
+        sock.connect((server_addr, 3000))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+        recv_data = sock.recv(4026)
+        print(&#39;Query Server sent:&#39;,recv_data)
+        res =  json.loads(recv_data.decode(&#39;ascii&#39;))
+
+        server_list = []
+        y=[]
+        if len(res) &gt; 0:
+            for i in res:
+                if len(i) &gt; 0:
+                    z = i[0]
+                
+                    y.append([z.split(&#39;$$$&#39;)[0] , z.split(&#39;$$$&#39;)[1], z.split(&#39;$$$&#39;)[2], z.split(&#39;$$$&#39;)[3], z.split(&#39;$$$&#39;)[4], z.split(&#39;$$$&#39;)[5], z.split(&#39;$$$&#39;)[6],  z.split(&#39;$$$&#39;)[7]])
+                
+
+        sock.close()
+        return y
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)
+        return []
+    
+
+def get_open_ports():
+    clients = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM PORTS&#39;)
+    for row in cursor:
+        clients.append([row[0],row[1]])
+    
+    return clients
+
+def store_port(host_ip, port):
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+    db.execute(&#39;INSERT INTO PORTS VALUES (?, ?)&#39;, (host_ip, port))
+    db.commit()
+
+def get_connected_devices():
+    ips = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM CONNECTED_USERS&#39;)
+    for row in cursor:
+        ips.append(row[0])
+    
+    return ips
+
+def get_connected_server_ip():
+    ips = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM CONNECTED_SERVER&#39;)
+    for row in cursor:
+        ips.append(row[1])
+        
+    if len(ips) &gt; 0:
+        return ips[len(ips)-1]
+    else:
+        return &#39;None&#39;
+
+def convert_to_datetime(time_submitted):
+    res = []
+    for t in time_submitted:
+        res.append(datetime.fromtimestamp(t).strftime(&#34;%H:%M:%S&#34;) )
+    return res
+
+def write_stats(data):
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    values=(
+        data[&#39;time_added&#39;],
+        data[&#39;cpu&#39;],
+        data[&#39;ram&#39;],
+        data[&#39;traffic_in&#39;],
+        data[&#39;traffic_out&#39;],
+        data[&#39;connected_hosts&#39;],
+        data[&#39;vpn_data_usage&#39;],
+        data[&#39;connected_server&#39;],
+    )
+    db.execute(&#39;INSERT INTO STATS(time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server) &#39; +\
+        &#39;VALUES (?,?,?,?,?,?,?,?)&#39;, values)
+    db.commit()
+
+def retrive_stats_data():
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server =[], [], [], [], [], [], [], []
+    #temp = None
+
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM STATS&#39;)
+    for row in cursor:
+        time_added.append(row[0])
+        cpu.append(row[1])
+        ram.append(row[2])
+        traffic_in.append(row[3])
+        traffic_out.append(row[4])
+        connected_hosts.append(row[5])
+        vpn_data_usage.append(row[6])
+        connected_server.append(row[7])
+
+    return time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server
+
+def get_bandwidth():        #returns the total bytes sent and recieved by the server
+    # Get net in/out
+    net1_out = psutil.net_io_counters().bytes_sent
+    net1_in = psutil.net_io_counters().bytes_recv
+
+    time.sleep(1)
+
+    # Get new net in/out
+    net2_out = psutil.net_io_counters().bytes_sent
+    net2_in = psutil.net_io_counters().bytes_recv
+
+    # Compare and get current speed
+    if net1_in &gt; net2_in:
+        current_in = 0
+    else:
+        current_in = net2_in - net1_in
+
+    if net1_out &gt; net2_out:
+        current_out = 0
+    else:
+        current_out = net2_out - net1_out
+
+    return {&#34;traffic_in&#34; : 500, &#34;traffic_out&#34; : 450}
+    #return {&#34;traffic_in&#34; : current_in, &#34;traffic_out&#34; : current_out}
+     
+
+def get_cpu_ram_usage(_time_interval):      #returns cpu and ram usage
+    cpu_percent = psutil.cpu_percent(_time_interval)    #measured over a specific time interval
+    ram_percent = psutil.virtual_memory()[2]
+    usage = {&#34;cpu_percent&#34;:cpu_percent, &#34;ram_percent&#34;:ram_percent}
+    return usage
+
+def send_to_query_server(data:dict, server_addr, port):
+    #send key performance metrics, connection statistics to the query server
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+
+    try:
+        sock.connect((server_addr, port))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)
+
+#def get_vpn_connection_status():
+
+def initialise_vpn(username, password, server_ip, psk):
+
+    subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+    subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+    script_file = open((root_path+&#39;init_connections.sh&#39;), &#39;w&#39;)
+    script_file.writelines([
+        &#39;cat &gt; /etc/ipsec.conf &lt;&lt;EOF\n&#39;,
+        &#39;# ipsec.conf - strongSwan IPsec configuration file\n&#39;,
+        &#39;conn gateway_vpn\n&#39;,
+        &#39;    auto=add\n&#39;,
+        &#39;    keyexchange=ikev1\n&#39;,
+        &#39;    authby=secret\n&#39;,
+        &#39;    type=transport\n&#39;,
+        &#39;    left=%defaultroute\n&#39;,
+        &#39;    leftprotoport=17/1701\n&#39;,
+        &#39;    rightprotoport=17/1701\n&#39;,
+        &#39;    right=&#39;+server_ip+&#39;\n&#39;,
+        &#39;    ike=aes128-sha1-modp2048\n&#39;,
+        &#39;    esp=aes128-sha1\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/ipsec.secrets &lt;&lt;EOF\n&#39;,
+        &#39;: PSK &#34;&#39;+psk+&#39;&#34;\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;chmod 600 /etc/ipsec.secrets\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/xl2tpd/xl2tpd.conf &lt;&lt;EOF\n&#39;,
+        &#39;[lac gateway_vpn]\n&#39;,
+        &#39;lns = 107.172.197.127\n&#39;,
+        &#39;ppp debug = yes\n&#39;,
+        &#39;pppoptfile = /etc/ppp/options.l2tpd.client\n&#39;,
+        &#39;length bit = yes\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/ppp/options.l2tpd.client &lt;&lt;EOF\n&#39;,
+        &#39;ipcp-accept-local\n&#39;,
+        &#39;ipcp-accept-remote\n&#39;,
+        &#39;refuse-eap\n&#39;,
+        &#39;require-chap\n&#39;,
+        &#39;noccp\n&#39;,
+        &#39;noauth\n&#39;,
+        &#39;mtu 1280\n&#39;,
+        &#39;mru 1280\n&#39;,
+        &#39;noipdefault\n&#39;,
+        &#39;defaultroute\n&#39;,
+        &#39;usepeerdns\n&#39;,
+        &#39;connect-delay 5000\n&#39;,
+        &#39;name &#34;&#39;+username+&#39;&#34;\n&#39;,
+        &#39;password &#34;&#39;+password+&#39;&#34;\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;chmod 600 /etc/ppp/options.l2tpd.client\n&#39;,
+        &#39;\n&#39;,
+        &#39;service ipsec restart\n&#39;,
+        &#39;service xl2tpd restart\n&#39;,
+    ])
+    script_file.close()
+    #carries out necessary configurations prior to system startup
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;init_connections.sh&#34;])
+    res = subprocess.run([root_path+&#34;init_connections.sh&#34;], shell=True)
+    
+    if res.returncode ==0:
+
+        status = connect_vpn(&#39;gateway_vpn&#39;)
+
+        print(&#39;CONNECTION REQUEST STATUS&#39;, status)
+        
+        if status:
+
+            #route add
+            f = open(root_path+&#39;route_add.sh&#39;, &#39;w&#39;)
+
+            time.sleep(2)
+
+            file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+            _ip = None
+            for i in file:
+                if &#39;inet &#39; in i:
+                    _ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+            e = _ip.split(&#39;.&#39;)
+            q = &#39;&#39;
+            for i in range(0,3):
+                q += (e[i]+&#39;.&#39;)
+            q+=&#39;1&#39;
+
+            f.write(&#39;route add &#39;+server_ip+&#39; gw &#39;+q+&#39;\n&#39;)
+            f.close()
+
+            f = open(root_path+&#39;route_add1.sh&#39;, &#39;w&#39;)
+            f.write(&#39;route add default dev ppp0\n&#39;)
+            f.close()
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;route_add.sh&#34;])
+            res = subprocess.run([root_path+&#34;route_add.sh&#34;], shell=True)
+
+            time.sleep(3)
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;route_add1.sh&#34;])
+            res = subprocess.run([root_path+&#34;route_add1.sh&#34;], shell=True)
+
+            if res.returncode ==0:
+
+                #ip forwarding
+                subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;gateway_ip_forward.sh&#34;])
+                subprocess.run([root_path+&#34;gateway_ip_forward.sh&#34;], shell=True)
+
+                subprocess.run([&#34;iptables&#34;, &#34;-t&#34;, &#34;nat&#34;, &#34;-A&#34;, &#34;POSTROUTING&#34;, &#34;-o&#34;, &#34;ppp0&#34;, &#34;-j&#34;, &#34;MASQUERADE&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;FORWARD&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-o&#34;, &#34;ppp0&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;FORWARD&#34;, &#34;-i&#34;, &#34;ppp0&#34;, &#34;-o&#34;, &#34;eth0&#34;, &#34;-m&#34;, &#34;state&#34;, &#34;--state&#34;, &#34;RELATED,ESTABLISHED&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;lo&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-p&#34;, &#34;icmp&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-p&#34;, &#34;tcp&#34;, &#34;--dport&#34;, &#34;22&#34; ,&#34;-j&#34;, &#34;ACCEPT&#34;])
+            
+                data = dict()
+                ip, rx, tx = get_virtual_interface()
+                data[&#34;network_id&#34;] = ip + &#39;_GATEWAY&#39;
+                data[&#34;server_ip&#34;] = server_ip
+                data[&#34;username&#34;] = username
+                data[&#34;password&#34;] = password
+                data[&#34;psk&#34;] = psk
+                
+                data[&#34;router_ip&#34;] = ip
+                data[&#39;connection_request&#39;] = &#39;register&#39;
+
+                db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+                db.execute(&#39;INSERT INTO CONNECTED_SERVER VALUES (?, ?)&#39;, (&#39;a&#39;, server_ip))
+                db.commit()
+                
+                send_to_query_server(data, server_addr, 3000)
+
+                print(&#39;SUCCESSFULLY CONNECTED TO THE VPN SERVER&#39;)
+
+                return True, ip
+            else:
+                print(&#39;FAILED STEP 3&#39;)
+                return False, &#39;&#39;
+        else:
+            print(&#39;FAILED STEP 2&#39;)
+            return False, &#39;&#39;
+    else:
+        print(&#39;FAILED STEP 1&#39;)
+        return False, &#39;&#39;
+
+def connect_wifi(ssid, password):
+    f = open(root_path+&#39;wifi_connect.sh&#39;, &#39;w&#39;)
+    f.write(&#39;wpa_passphrase &#34;&#39;+ssid+&#39;&#34; &#34;&#39;+password+&#39;&#34;\n&#39;)
+    f.write(&#39;wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0&#39;)
+    f.close()
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;wifi_connect.sh&#34;])
+    res = subprocess.run([root_path+&#34;wifi_connect.sh&#34;], shell=True)
+    if res.returncode ==0:
+        res4 = subprocess.run([root_path+&#34;ifconfig_wlan.sh&#34;], shell=True)
+        file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+        _ip = None
+        for i in file:
+            if &#39;inet&#39; in i:
+                _ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+        return _ip
+    else:
+        return &#39;&#39;
+
+def get_virtual_interface():
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;logfiles/ifconfig_ppp0.sh&#34;])
+    res = subprocess.run([root_path+&#34;logfiles/ifconfig_ppp0.sh&#34;], shell=True)
+    if res.returncode ==0: 
+        file = open(root_path+&#39;logfiles/ppp0_details.txt&#39;, &#39;r&#39;).readlines()
+        virtual_ip = None
+        rx = 0
+        tx = 0
+        for i in file:
+            if &#39;inet &#39; in i:
+                virtual_ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+            if &#39;RX packets&#39; in i:
+                rx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+            if &#39;TX packets&#39; in i:
+                tx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+
+        return virtual_ip, rx, tx
+        
+def change_l2tp_options(params:dict):
+    #changes the setting in the options.l2tpd.client
+    pass
+
+def change_l2tp_server(params:dict):
+    #changes settings in the xl2tpd.conf file
+    pass
+
+def change_psk(psk):
+    #changes the pre shared key
+    try:
+        secrets_files = open(&#34;/etc/ipsec.secrets&#34;,&#34;w&#34;)
+        secrets_files.write(&#34;: PSK \&#34;&#34;+psk+&#34;\&#34;&#34;)
+        secrets_files.close()
+
+        return True
+    except:
+        return False
+
+def add_vpn_connection(params:dict):
+    #changes the settings in the ipsec.conf file
+    pass
+
+def change_dhcp_config(start_ip, end_ip):
+    #changes settings in the dhcpcd.conf and dnsmasq.conf files
+    file = open(&#39;/etc/dnsmasq.conf&#39;, &#39;w&#39;)
+    file.write(&#39;interface=eth0\n&#39;)
+    file.write(&#39;bind-dynamic\n&#39;)
+    file.write(&#39;domain-needed\n&#39;)
+    file.write(&#39;bogus-priv\n&#39;)
+    file.write(&#39;dhcp-range=&#39;+start_ip+&#39;,&#39;+end_ip+&#39;,255.255.255.0,12h\n&#39;)
+    file.close()
+    pass
+
+def change_route(vpn_server_ip, dafault_gateway_ip):
+    #changes the default tunneling route and interface name
+    res = subprocess.run([&#34;route&#34;, &#34;add&#34;, vpn_server_ip , &#34;gw&#34;, dafault_gateway_ip])
+    if res.returncode ==0:
+        return True
+    else:
+        return False
+
+def reset_vpn(vpn_name):
+    res1 = subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+    res2 = subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+    res3 = subprocess.run([&#34;ipsec&#34;, &#34;up&#34;, vpn_name])
+
+    try:
+        l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+        l2tp_file.write(&#34;c &#34;+vpn_name)
+        l2tp_file.close()
+
+        if res1.returncode ==0 and res2.returncode==0 and res3.returncode==0:     #returns True if all the terminal commands have excuted successfully
+            return True
+        else:
+           return False
+    except:
+        return False
+
+def connect_vpn(vpn_name):
+    res = subprocess.run([&#34;ipsec&#34;, &#34;up&#34;, vpn_name])
+
+    try:
+        l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+        l2tp_file.write(&#34;c &#34;+vpn_name)
+        l2tp_file.close()
+
+        if res.returncode ==0:
+            return True
+        else:
+           return False
+    except:
+        return False
+
+def disconnect_vpn(vpn_name):
+    res = subprocess.run([&#34;ipsec&#34;, &#34;down&#34;, vpn_name])
+    if res.returncode ==0:
+        try:
+            l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+            l2tp_file.write(&#34;d &#34;+vpn_name)
+            l2tp_file.close()
+
+            data = dict()
+            ip, rx, tx = get_virtual_interface()
+            data[&#39;connection_request&#39;] == &#39;delete&#39;
+            data[&#39;network_id&#39;] = ip + &#39;_GATEWAY&#39;
+
+            send_to_query_server(data, server_addr, 3000)
+            return True
+        except:
+            return False
+    else:
+        return False 
+    
+
+def query_vpn_network(params:dict):
+    c_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    query_server_ip = &#34;127.0.0.1&#34;
+    query_server_port = 1500
+    c_sock.connect((query_server_ip, query_server_port))
+    c_sock.send(json.dumps(params).encode(&#34;ascii&#34;))
+    data = c_sock.recv(1024)
+    return json.loads(data)
+    
+def enable_port_forwarding(port, host_ip):
+    gateway_ip = None
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;wifi_connect.sh&#34;])
+    res = subprocess.run([root_path+&#34;wifi_connect.sh&#34;], shell=True)
+
+    if True:#res.returncode ==0:
+        file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+        for i in file:
+            if &#39;inet &#39; in i:
+                gateway_ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+
+        try:
+            file = open(root_path+&#34;port_forwarding.sh&#34;,&#34;w&#34;)
+            file.write(&#34;iptables -t nat -A PREROUTING -i ppp0 -p tcp --dport &#34;+str(port)+&#34; -j DNAT --to-destination &#34;+host_ip+&#34;\n&#34;)
+            file.write(&#34;iptables -t nat -A POSTROUTING -o eth0 -p tcp --dport &#34;+str(port)+&#34; -d &#34;+host_ip+&#34; -j SNAT --to-source &#34;+gateway_ip+&#34;\n&#34;)
+            file.close()
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+            res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+            if res.returncode ==0 and res2.returncode ==0:
+                db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+                db.execute(&#39;INSERT INTO PORTS VALUES (?, ?)&#39;, (host_ip, port))
+                db.commit()
+                return True
+            else:
+                return False
+            
+        except:
+            return False
+    else:
+        return False</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="dashboard.gateway_config.add_vpn_connection"><code class="name flex">
+<span>def <span class="ident">add_vpn_connection</span></span>(<span>params: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_vpn_connection(params:dict):
+    #changes the settings in the ipsec.conf file
+    pass</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.change_dhcp_config"><code class="name flex">
+<span>def <span class="ident">change_dhcp_config</span></span>(<span>start_ip, end_ip)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_dhcp_config(start_ip, end_ip):
+    #changes settings in the dhcpcd.conf and dnsmasq.conf files
+    file = open(&#39;/etc/dnsmasq.conf&#39;, &#39;w&#39;)
+    file.write(&#39;interface=eth0\n&#39;)
+    file.write(&#39;bind-dynamic\n&#39;)
+    file.write(&#39;domain-needed\n&#39;)
+    file.write(&#39;bogus-priv\n&#39;)
+    file.write(&#39;dhcp-range=&#39;+start_ip+&#39;,&#39;+end_ip+&#39;,255.255.255.0,12h\n&#39;)
+    file.close()
+    pass</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.change_l2tp_options"><code class="name flex">
+<span>def <span class="ident">change_l2tp_options</span></span>(<span>params: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_l2tp_options(params:dict):
+    #changes the setting in the options.l2tpd.client
+    pass</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.change_l2tp_server"><code class="name flex">
+<span>def <span class="ident">change_l2tp_server</span></span>(<span>params: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_l2tp_server(params:dict):
+    #changes settings in the xl2tpd.conf file
+    pass</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.change_psk"><code class="name flex">
+<span>def <span class="ident">change_psk</span></span>(<span>psk)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_psk(psk):
+    #changes the pre shared key
+    try:
+        secrets_files = open(&#34;/etc/ipsec.secrets&#34;,&#34;w&#34;)
+        secrets_files.write(&#34;: PSK \&#34;&#34;+psk+&#34;\&#34;&#34;)
+        secrets_files.close()
+
+        return True
+    except:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.change_route"><code class="name flex">
+<span>def <span class="ident">change_route</span></span>(<span>vpn_server_ip, dafault_gateway_ip)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_route(vpn_server_ip, dafault_gateway_ip):
+    #changes the default tunneling route and interface name
+    res = subprocess.run([&#34;route&#34;, &#34;add&#34;, vpn_server_ip , &#34;gw&#34;, dafault_gateway_ip])
+    if res.returncode ==0:
+        return True
+    else:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.connect_vpn"><code class="name flex">
+<span>def <span class="ident">connect_vpn</span></span>(<span>vpn_name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect_vpn(vpn_name):
+    res = subprocess.run([&#34;ipsec&#34;, &#34;up&#34;, vpn_name])
+
+    try:
+        l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+        l2tp_file.write(&#34;c &#34;+vpn_name)
+        l2tp_file.close()
+
+        if res.returncode ==0:
+            return True
+        else:
+           return False
+    except:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.connect_wifi"><code class="name flex">
+<span>def <span class="ident">connect_wifi</span></span>(<span>ssid, password)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect_wifi(ssid, password):
+    f = open(root_path+&#39;wifi_connect.sh&#39;, &#39;w&#39;)
+    f.write(&#39;wpa_passphrase &#34;&#39;+ssid+&#39;&#34; &#34;&#39;+password+&#39;&#34;\n&#39;)
+    f.write(&#39;wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0&#39;)
+    f.close()
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;wifi_connect.sh&#34;])
+    res = subprocess.run([root_path+&#34;wifi_connect.sh&#34;], shell=True)
+    if res.returncode ==0:
+        res4 = subprocess.run([root_path+&#34;ifconfig_wlan.sh&#34;], shell=True)
+        file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+        _ip = None
+        for i in file:
+            if &#39;inet&#39; in i:
+                _ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+        return _ip
+    else:
+        return &#39;&#39;</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.convert_to_datetime"><code class="name flex">
+<span>def <span class="ident">convert_to_datetime</span></span>(<span>time_submitted)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_to_datetime(time_submitted):
+    res = []
+    for t in time_submitted:
+        res.append(datetime.fromtimestamp(t).strftime(&#34;%H:%M:%S&#34;) )
+    return res</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.disconnect_vpn"><code class="name flex">
+<span>def <span class="ident">disconnect_vpn</span></span>(<span>vpn_name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def disconnect_vpn(vpn_name):
+    res = subprocess.run([&#34;ipsec&#34;, &#34;down&#34;, vpn_name])
+    if res.returncode ==0:
+        try:
+            l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+            l2tp_file.write(&#34;d &#34;+vpn_name)
+            l2tp_file.close()
+
+            data = dict()
+            ip, rx, tx = get_virtual_interface()
+            data[&#39;connection_request&#39;] == &#39;delete&#39;
+            data[&#39;network_id&#39;] = ip + &#39;_GATEWAY&#39;
+
+            send_to_query_server(data, server_addr, 3000)
+            return True
+        except:
+            return False
+    else:
+        return False </code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.enable_port_forwarding"><code class="name flex">
+<span>def <span class="ident">enable_port_forwarding</span></span>(<span>port, host_ip)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def enable_port_forwarding(port, host_ip):
+    gateway_ip = None
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;wifi_connect.sh&#34;])
+    res = subprocess.run([root_path+&#34;wifi_connect.sh&#34;], shell=True)
+
+    if True:#res.returncode ==0:
+        file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+        for i in file:
+            if &#39;inet &#39; in i:
+                gateway_ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+
+        try:
+            file = open(root_path+&#34;port_forwarding.sh&#34;,&#34;w&#34;)
+            file.write(&#34;iptables -t nat -A PREROUTING -i ppp0 -p tcp --dport &#34;+str(port)+&#34; -j DNAT --to-destination &#34;+host_ip+&#34;\n&#34;)
+            file.write(&#34;iptables -t nat -A POSTROUTING -o eth0 -p tcp --dport &#34;+str(port)+&#34; -d &#34;+host_ip+&#34; -j SNAT --to-source &#34;+gateway_ip+&#34;\n&#34;)
+            file.close()
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;port_forwarding.sh&#34;])
+            res2 = subprocess.run([&#34;bash&#34;, root_path+&#34;port_forwarding.sh&#34;])
+            if res.returncode ==0 and res2.returncode ==0:
+                db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+                db.execute(&#39;INSERT INTO PORTS VALUES (?, ?)&#39;, (host_ip, port))
+                db.commit()
+                return True
+            else:
+                return False
+            
+        except:
+            return False
+    else:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_available_servers"><code class="name flex">
+<span>def <span class="ident">get_available_servers</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_available_servers():
+    data = {&#39;connection_request&#39;:&#39;query_servers&#39;}
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+        return []
+
+    try:
+        sock.connect((server_addr, 3000))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+        recv_data = sock.recv(4026)
+        print(&#39;Query Server sent:&#39;,recv_data)
+        res =  json.loads(recv_data.decode(&#39;ascii&#39;))
+
+        server_list = []
+        y=[]
+        if len(res) &gt; 0:
+            for i in res:
+                if len(i) &gt; 0:
+                    z = i[0]
+                
+                    y.append([z.split(&#39;$$$&#39;)[0] , z.split(&#39;$$$&#39;)[1], z.split(&#39;$$$&#39;)[2], z.split(&#39;$$$&#39;)[3], z.split(&#39;$$$&#39;)[4], z.split(&#39;$$$&#39;)[5], z.split(&#39;$$$&#39;)[6],  z.split(&#39;$$$&#39;)[7]])
+                
+
+        sock.close()
+        return y
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)
+        return []</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_bandwidth"><code class="name flex">
+<span>def <span class="ident">get_bandwidth</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_bandwidth():        #returns the total bytes sent and recieved by the server
+    # Get net in/out
+    net1_out = psutil.net_io_counters().bytes_sent
+    net1_in = psutil.net_io_counters().bytes_recv
+
+    time.sleep(1)
+
+    # Get new net in/out
+    net2_out = psutil.net_io_counters().bytes_sent
+    net2_in = psutil.net_io_counters().bytes_recv
+
+    # Compare and get current speed
+    if net1_in &gt; net2_in:
+        current_in = 0
+    else:
+        current_in = net2_in - net1_in
+
+    if net1_out &gt; net2_out:
+        current_out = 0
+    else:
+        current_out = net2_out - net1_out
+
+    return {&#34;traffic_in&#34; : 500, &#34;traffic_out&#34; : 450}</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_connected_devices"><code class="name flex">
+<span>def <span class="ident">get_connected_devices</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_connected_devices():
+    ips = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM CONNECTED_USERS&#39;)
+    for row in cursor:
+        ips.append(row[0])
+    
+    return ips</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_connected_server_ip"><code class="name flex">
+<span>def <span class="ident">get_connected_server_ip</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_connected_server_ip():
+    ips = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM CONNECTED_SERVER&#39;)
+    for row in cursor:
+        ips.append(row[1])
+        
+    if len(ips) &gt; 0:
+        return ips[len(ips)-1]
+    else:
+        return &#39;None&#39;</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_cpu_ram_usage"><code class="name flex">
+<span>def <span class="ident">get_cpu_ram_usage</span></span>(<span>_time_interval)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_cpu_ram_usage(_time_interval):      #returns cpu and ram usage
+    cpu_percent = psutil.cpu_percent(_time_interval)    #measured over a specific time interval
+    ram_percent = psutil.virtual_memory()[2]
+    usage = {&#34;cpu_percent&#34;:cpu_percent, &#34;ram_percent&#34;:ram_percent}
+    return usage</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_open_ports"><code class="name flex">
+<span>def <span class="ident">get_open_ports</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_open_ports():
+    clients = []
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM PORTS&#39;)
+    for row in cursor:
+        clients.append([row[0],row[1]])
+    
+    return clients</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.get_virtual_interface"><code class="name flex">
+<span>def <span class="ident">get_virtual_interface</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_virtual_interface():
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;logfiles/ifconfig_ppp0.sh&#34;])
+    res = subprocess.run([root_path+&#34;logfiles/ifconfig_ppp0.sh&#34;], shell=True)
+    if res.returncode ==0: 
+        file = open(root_path+&#39;logfiles/ppp0_details.txt&#39;, &#39;r&#39;).readlines()
+        virtual_ip = None
+        rx = 0
+        tx = 0
+        for i in file:
+            if &#39;inet &#39; in i:
+                virtual_ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+            if &#39;RX packets&#39; in i:
+                rx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+            if &#39;TX packets&#39; in i:
+                tx = int(i.split(&#39;bytes&#39;)[1].split(&#39;(&#39;)[0])
+
+        return virtual_ip, rx, tx</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.initialise_vpn"><code class="name flex">
+<span>def <span class="ident">initialise_vpn</span></span>(<span>username, password, server_ip, psk)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialise_vpn(username, password, server_ip, psk):
+
+    subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+    subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+    script_file = open((root_path+&#39;init_connections.sh&#39;), &#39;w&#39;)
+    script_file.writelines([
+        &#39;cat &gt; /etc/ipsec.conf &lt;&lt;EOF\n&#39;,
+        &#39;# ipsec.conf - strongSwan IPsec configuration file\n&#39;,
+        &#39;conn gateway_vpn\n&#39;,
+        &#39;    auto=add\n&#39;,
+        &#39;    keyexchange=ikev1\n&#39;,
+        &#39;    authby=secret\n&#39;,
+        &#39;    type=transport\n&#39;,
+        &#39;    left=%defaultroute\n&#39;,
+        &#39;    leftprotoport=17/1701\n&#39;,
+        &#39;    rightprotoport=17/1701\n&#39;,
+        &#39;    right=&#39;+server_ip+&#39;\n&#39;,
+        &#39;    ike=aes128-sha1-modp2048\n&#39;,
+        &#39;    esp=aes128-sha1\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/ipsec.secrets &lt;&lt;EOF\n&#39;,
+        &#39;: PSK &#34;&#39;+psk+&#39;&#34;\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;chmod 600 /etc/ipsec.secrets\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/xl2tpd/xl2tpd.conf &lt;&lt;EOF\n&#39;,
+        &#39;[lac gateway_vpn]\n&#39;,
+        &#39;lns = 107.172.197.127\n&#39;,
+        &#39;ppp debug = yes\n&#39;,
+        &#39;pppoptfile = /etc/ppp/options.l2tpd.client\n&#39;,
+        &#39;length bit = yes\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;cat &gt; /etc/ppp/options.l2tpd.client &lt;&lt;EOF\n&#39;,
+        &#39;ipcp-accept-local\n&#39;,
+        &#39;ipcp-accept-remote\n&#39;,
+        &#39;refuse-eap\n&#39;,
+        &#39;require-chap\n&#39;,
+        &#39;noccp\n&#39;,
+        &#39;noauth\n&#39;,
+        &#39;mtu 1280\n&#39;,
+        &#39;mru 1280\n&#39;,
+        &#39;noipdefault\n&#39;,
+        &#39;defaultroute\n&#39;,
+        &#39;usepeerdns\n&#39;,
+        &#39;connect-delay 5000\n&#39;,
+        &#39;name &#34;&#39;+username+&#39;&#34;\n&#39;,
+        &#39;password &#34;&#39;+password+&#39;&#34;\n&#39;,
+        &#39;EOF\n&#39;,
+        &#39;\n&#39;,
+        &#39;chmod 600 /etc/ppp/options.l2tpd.client\n&#39;,
+        &#39;\n&#39;,
+        &#39;service ipsec restart\n&#39;,
+        &#39;service xl2tpd restart\n&#39;,
+    ])
+    script_file.close()
+    #carries out necessary configurations prior to system startup
+    subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;init_connections.sh&#34;])
+    res = subprocess.run([root_path+&#34;init_connections.sh&#34;], shell=True)
+    
+    if res.returncode ==0:
+
+        status = connect_vpn(&#39;gateway_vpn&#39;)
+
+        print(&#39;CONNECTION REQUEST STATUS&#39;, status)
+        
+        if status:
+
+            #route add
+            f = open(root_path+&#39;route_add.sh&#39;, &#39;w&#39;)
+
+            time.sleep(2)
+
+            file = open(root_path+&#39;logfiles/wlan_details.txt&#39;, &#39;r&#39;).readlines()
+            _ip = None
+            for i in file:
+                if &#39;inet &#39; in i:
+                    _ip = i.split(&#39;inet &#39;)[1].split(&#39; netmask&#39;)[0] 
+
+            e = _ip.split(&#39;.&#39;)
+            q = &#39;&#39;
+            for i in range(0,3):
+                q += (e[i]+&#39;.&#39;)
+            q+=&#39;1&#39;
+
+            f.write(&#39;route add &#39;+server_ip+&#39; gw &#39;+q+&#39;\n&#39;)
+            f.close()
+
+            f = open(root_path+&#39;route_add1.sh&#39;, &#39;w&#39;)
+            f.write(&#39;route add default dev ppp0\n&#39;)
+            f.close()
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;route_add.sh&#34;])
+            res = subprocess.run([root_path+&#34;route_add.sh&#34;], shell=True)
+
+            time.sleep(3)
+
+            res = subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;route_add1.sh&#34;])
+            res = subprocess.run([root_path+&#34;route_add1.sh&#34;], shell=True)
+
+            if res.returncode ==0:
+
+                #ip forwarding
+                subprocess.run([&#34;chmod&#34;, &#34;+x&#34;, root_path+&#34;gateway_ip_forward.sh&#34;])
+                subprocess.run([root_path+&#34;gateway_ip_forward.sh&#34;], shell=True)
+
+                subprocess.run([&#34;iptables&#34;, &#34;-t&#34;, &#34;nat&#34;, &#34;-A&#34;, &#34;POSTROUTING&#34;, &#34;-o&#34;, &#34;ppp0&#34;, &#34;-j&#34;, &#34;MASQUERADE&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;FORWARD&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-o&#34;, &#34;ppp0&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;FORWARD&#34;, &#34;-i&#34;, &#34;ppp0&#34;, &#34;-o&#34;, &#34;eth0&#34;, &#34;-m&#34;, &#34;state&#34;, &#34;--state&#34;, &#34;RELATED,ESTABLISHED&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;lo&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-p&#34;, &#34;icmp&#34;, &#34;-j&#34;, &#34;ACCEPT&#34;])
+                subprocess.run([&#34;iptables&#34;, &#34;-A&#34;, &#34;INPUT&#34;, &#34;-i&#34;, &#34;eth0&#34;, &#34;-p&#34;, &#34;tcp&#34;, &#34;--dport&#34;, &#34;22&#34; ,&#34;-j&#34;, &#34;ACCEPT&#34;])
+            
+                data = dict()
+                ip, rx, tx = get_virtual_interface()
+                data[&#34;network_id&#34;] = ip + &#39;_GATEWAY&#39;
+                data[&#34;server_ip&#34;] = server_ip
+                data[&#34;username&#34;] = username
+                data[&#34;password&#34;] = password
+                data[&#34;psk&#34;] = psk
+                
+                data[&#34;router_ip&#34;] = ip
+                data[&#39;connection_request&#39;] = &#39;register&#39;
+
+                db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+                db.execute(&#39;INSERT INTO CONNECTED_SERVER VALUES (?, ?)&#39;, (&#39;a&#39;, server_ip))
+                db.commit()
+                
+                send_to_query_server(data, server_addr, 3000)
+
+                print(&#39;SUCCESSFULLY CONNECTED TO THE VPN SERVER&#39;)
+
+                return True, ip
+            else:
+                print(&#39;FAILED STEP 3&#39;)
+                return False, &#39;&#39;
+        else:
+            print(&#39;FAILED STEP 2&#39;)
+            return False, &#39;&#39;
+    else:
+        print(&#39;FAILED STEP 1&#39;)
+        return False, &#39;&#39;</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.query_vpn_network"><code class="name flex">
+<span>def <span class="ident">query_vpn_network</span></span>(<span>params: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def query_vpn_network(params:dict):
+    c_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    query_server_ip = &#34;127.0.0.1&#34;
+    query_server_port = 1500
+    c_sock.connect((query_server_ip, query_server_port))
+    c_sock.send(json.dumps(params).encode(&#34;ascii&#34;))
+    data = c_sock.recv(1024)
+    return json.loads(data)</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.reset_vpn"><code class="name flex">
+<span>def <span class="ident">reset_vpn</span></span>(<span>vpn_name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_vpn(vpn_name):
+    res1 = subprocess.run([&#34;service&#34;, &#34;ipsec&#34;, &#34;restart&#34;])
+    res2 = subprocess.run([&#34;service&#34;, &#34;xl2tpd&#34;, &#34;restart&#34;])
+    res3 = subprocess.run([&#34;ipsec&#34;, &#34;up&#34;, vpn_name])
+
+    try:
+        l2tp_file = open(&#34;/var/run/xl2tpd/l2tp-control&#34;, &#34;w&#34;)
+        l2tp_file.write(&#34;c &#34;+vpn_name)
+        l2tp_file.close()
+
+        if res1.returncode ==0 and res2.returncode==0 and res3.returncode==0:     #returns True if all the terminal commands have excuted successfully
+            return True
+        else:
+           return False
+    except:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.retrive_stats_data"><code class="name flex">
+<span>def <span class="ident">retrive_stats_data</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def retrive_stats_data():
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server =[], [], [], [], [], [], [], []
+    #temp = None
+
+    db.row_factory = sqlite3.Row
+    cursor = db.execute(&#39;SELECT * FROM STATS&#39;)
+    for row in cursor:
+        time_added.append(row[0])
+        cpu.append(row[1])
+        ram.append(row[2])
+        traffic_in.append(row[3])
+        traffic_out.append(row[4])
+        connected_hosts.append(row[5])
+        vpn_data_usage.append(row[6])
+        connected_server.append(row[7])
+
+    return time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.send_to_query_server"><code class="name flex">
+<span>def <span class="ident">send_to_query_server</span></span>(<span>data: dict, server_addr, port)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_to_query_server(data:dict, server_addr, port):
+    #send key performance metrics, connection statistics to the query server
+    jsonResult = json.dumps(data).encode(&#39;ascii&#39;)
+    try:
+        sock = socket.socket()
+    except socket.error as err:
+        print(&#39;Socket error because of %s&#39; %(err))
+
+    try:
+        sock.connect((server_addr, port))
+        sock.send(jsonResult)
+        #connection.sendall(json.dumps(data).encode(&#39;ascii&#39;))
+    except socket.gaierror:
+        print(&#39;There an error resolving the host&#39;)</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.store_port"><code class="name flex">
+<span>def <span class="ident">store_port</span></span>(<span>host_ip, port)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def store_port(host_ip, port):
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+
+    db.execute(&#39;INSERT INTO PORTS VALUES (?, ?)&#39;, (host_ip, port))
+    db.commit()</code></pre>
+</details>
+</dd>
+<dt id="dashboard.gateway_config.write_stats"><code class="name flex">
+<span>def <span class="ident">write_stats</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_stats(data):
+    db = sqlite3.connect(root_path+&#39;gateway_stats.db&#39;)
+    values=(
+        data[&#39;time_added&#39;],
+        data[&#39;cpu&#39;],
+        data[&#39;ram&#39;],
+        data[&#39;traffic_in&#39;],
+        data[&#39;traffic_out&#39;],
+        data[&#39;connected_hosts&#39;],
+        data[&#39;vpn_data_usage&#39;],
+        data[&#39;connected_server&#39;],
+    )
+    db.execute(&#39;INSERT INTO STATS(time_added, cpu, ram, traffic_in, traffic_out, connected_hosts, vpn_data_usage, connected_server) &#39; +\
+        &#39;VALUES (?,?,?,?,?,?,?,?)&#39;, values)
+    db.commit()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="dashboard" href="index.html">dashboard</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="dashboard.gateway_config.add_vpn_connection" href="#dashboard.gateway_config.add_vpn_connection">add_vpn_connection</a></code></li>
+<li><code><a title="dashboard.gateway_config.change_dhcp_config" href="#dashboard.gateway_config.change_dhcp_config">change_dhcp_config</a></code></li>
+<li><code><a title="dashboard.gateway_config.change_l2tp_options" href="#dashboard.gateway_config.change_l2tp_options">change_l2tp_options</a></code></li>
+<li><code><a title="dashboard.gateway_config.change_l2tp_server" href="#dashboard.gateway_config.change_l2tp_server">change_l2tp_server</a></code></li>
+<li><code><a title="dashboard.gateway_config.change_psk" href="#dashboard.gateway_config.change_psk">change_psk</a></code></li>
+<li><code><a title="dashboard.gateway_config.change_route" href="#dashboard.gateway_config.change_route">change_route</a></code></li>
+<li><code><a title="dashboard.gateway_config.connect_vpn" href="#dashboard.gateway_config.connect_vpn">connect_vpn</a></code></li>
+<li><code><a title="dashboard.gateway_config.connect_wifi" href="#dashboard.gateway_config.connect_wifi">connect_wifi</a></code></li>
+<li><code><a title="dashboard.gateway_config.convert_to_datetime" href="#dashboard.gateway_config.convert_to_datetime">convert_to_datetime</a></code></li>
+<li><code><a title="dashboard.gateway_config.disconnect_vpn" href="#dashboard.gateway_config.disconnect_vpn">disconnect_vpn</a></code></li>
+<li><code><a title="dashboard.gateway_config.enable_port_forwarding" href="#dashboard.gateway_config.enable_port_forwarding">enable_port_forwarding</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_available_servers" href="#dashboard.gateway_config.get_available_servers">get_available_servers</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_bandwidth" href="#dashboard.gateway_config.get_bandwidth">get_bandwidth</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_connected_devices" href="#dashboard.gateway_config.get_connected_devices">get_connected_devices</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_connected_server_ip" href="#dashboard.gateway_config.get_connected_server_ip">get_connected_server_ip</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_cpu_ram_usage" href="#dashboard.gateway_config.get_cpu_ram_usage">get_cpu_ram_usage</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_open_ports" href="#dashboard.gateway_config.get_open_ports">get_open_ports</a></code></li>
+<li><code><a title="dashboard.gateway_config.get_virtual_interface" href="#dashboard.gateway_config.get_virtual_interface">get_virtual_interface</a></code></li>
+<li><code><a title="dashboard.gateway_config.initialise_vpn" href="#dashboard.gateway_config.initialise_vpn">initialise_vpn</a></code></li>
+<li><code><a title="dashboard.gateway_config.query_vpn_network" href="#dashboard.gateway_config.query_vpn_network">query_vpn_network</a></code></li>
+<li><code><a title="dashboard.gateway_config.reset_vpn" href="#dashboard.gateway_config.reset_vpn">reset_vpn</a></code></li>
+<li><code><a title="dashboard.gateway_config.retrive_stats_data" href="#dashboard.gateway_config.retrive_stats_data">retrive_stats_data</a></code></li>
+<li><code><a title="dashboard.gateway_config.send_to_query_server" href="#dashboard.gateway_config.send_to_query_server">send_to_query_server</a></code></li>
+<li><code><a title="dashboard.gateway_config.store_port" href="#dashboard.gateway_config.store_port">store_port</a></code></li>
+<li><code><a title="dashboard.gateway_config.write_stats" href="#dashboard.gateway_config.write_stats">write_stats</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

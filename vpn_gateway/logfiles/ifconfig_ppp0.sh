@@ -1,0 +1,1 @@
+ifconfig ppp0 > /root/test_folder/vpn_gateway/logfiles/ppp0_details.txt
