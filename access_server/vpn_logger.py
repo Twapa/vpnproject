@@ -1,5 +1,7 @@
 '''
-THIS SCRIPT SHOULD BE HOSTED ON THE VPN SERVER
+THIS SCRIPT SHOULD BE HOSTED ON THE VPN SERVER SCRIPT FOR STRONGSWAN
+.....................................................................
+The script will extract vpn statistics on the VPN server
 '''
 import subprocess
 import time
@@ -14,6 +16,7 @@ import requests
 # program that executes a bash script that logs
 # the current state of VPN connections every one minute
 def log_connections(_seconds):
+    :param name: _seconds -m Seconds to sleep between
     while True:
         subprocess.run(["logtraffic.sh"], shell=True)
         time.sleep(_seconds)
@@ -151,3 +154,7 @@ def run():
     t2 = threading.Thread(target=send_statistics, args=(time_interval,query_server_ip,query_server_port), daemon=True)
     t1.start() 
     t2.start()
+
+
+
+

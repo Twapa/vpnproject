@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>SERVER METRICS</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <h3>metrics</h3>
+            <button class="button" @click="loadData">Load Data {{ svdata.updated }}</button>
+        </div>
+        
+
+
+        <div class="tableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>time submitted </th>
+                        <th>hostname</th>
+                        <th>country</th>
+                        <th>ipsec_total_users</th>
+                        <th>ipsec_authenticated_users</th>
+                        <th>ipsec_anonymous_users</th>
+                        <th>ikev2_total_certs</th>
+                        <th>ike_half_open_certs</th>
+                        <th>ikev2_open_conn</th>
+                        <th>ikev2_authenticated_users</th>
+                        <th>ikev2_anonymous_users</th>
+                        <th>traffic_in</th>
+                        <th>traffic_out</th>
+                        <th>cpu_percent</th>
+                        <th>ram_percent</th>
+                        <th>min_rtt</th>
+                        <th>avg_rtt</th>
+                        <th>max_rtt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in svdata">
+                        <td>{{ item["time_submitted"] }}</td>
+                        <td>{{ item["hostname"] }}</td>
+                        <td>{{ item["country"] }}</td>
+                        <td>{{ item["ipsec_total_users"] }}</td>
+                        <td>{{ item["psec_authenticated_users"] }}</td>
+                        <td>{{ item["ipsec_anonymous_users"] }}</td>
+                        <td>{{ item["ikev2_total_certs"] }}</td>
+                        <td>{{ item["ike_half_open_certs"] }}</td>
+                        <td>{{ item["ikev2_open_conn"] }}</td>
+                        <td>{{ item["ikev2_authenticated_users"] }}</td>     
+                        <td>{{ item["ikev2_anonymous_users"] }}</td>     
+                        <td>{{ item["traffic_in"] }}</td>
+                        <td>{{ item["traffic_out"] }}</td>
+                        <td>{{ item["cpu_percent"] }}</td>
+                        <td>{{ item["min_rtt"] }}</td>
+                        <td>{{ item["avg_rtt"] }}</td>
+                        <td>{{ item["max_rtt"] }}</td>
+                             
+
+                    </tr>
+                </tbody>
+            </table>
+
+        
+        
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

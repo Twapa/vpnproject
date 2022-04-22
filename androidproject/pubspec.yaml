@@ -27,9 +27,18 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  avatar_glow: null
+  circular_progress_bar: ^0.0.4
   cupertino_icons: ^1.0.2
+  dartdoc: ^5.0.1
   flutter:
     sdk: flutter
+  google_fonts: null
+  internet_speed_test: ^1.5.0
+  network_info_plus: null
+  percent_indicator: ^4.0.0
+  permission_handler: null
+  syncfusion_flutter_charts: ^20.1.47+1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

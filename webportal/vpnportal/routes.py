@@ -4,6 +4,7 @@ from vpnportal.models import Ipsec, Item, User
 from vpnportal.forms import RegisterForm, LoginForm
 from vpnportal import db
 from flask_login import login_user, logout_user, login_required
+import json
 
 @app.route('/')
 @app.route('/home')
@@ -12,9 +13,12 @@ def home_page():
 
 
 
+
+
 @app.route('/serverroute/<int:id>')
 @login_required
 def serverroute(id):
+    
     mydata = Ipsec.query.get(id)
 
     return render_template('server.html',data=mydata)
@@ -31,10 +35,31 @@ def servermetrics():
 def serverconfig():
     
 
-    return render_template('serverconfig.html') 
+    return render_template('serverconfig.html')
+
+
+
+
+@app.route('/htmlvue')
+
+def vuerender():
+    
+
+    return render_template('htmlvue.html')    
+
+
+
 
     
 
+
+@app.route('/json')
+@login_required
+def savejson():
+    with open('./vpnportal/data.json','r') as f:
+        data = json.loads(f.read())
+
+        return data
 
 
 @app.route('/servers')
